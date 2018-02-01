@@ -46,5 +46,13 @@
             color: $white;
             border-color: $white;
         }
+        .validation{
+            margin: -0.75rem 0 1rem 0;
+            span{
+                font-size: 0.75rem;
+                font-weight: 300;
+                color: #FFC2C2;
+            }
+        }
     }
 }

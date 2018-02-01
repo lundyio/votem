@@ -63,6 +63,8 @@ body{
         color: $charcoal;
         &:hover{
             cursor: pointer;
+            border-color: $seafoam !important;
+            color: $seafoam !important;
         }
     }
     input{
@@ -83,5 +85,38 @@ app-root{
     overflow-x: hidden;
     min-height: 100vh;
     width: 100%;
+}
+
+// Shake Animation
+
+.shake {
+    -webkit-animation: shake 0.2s 1 linear;
+    -moz-animation: shake 0.2s 1 linear;
+    -o-animation: shake 0.2s 1 linear;
+}
+
+@-webkit-keyframes shake {
+    0% { -webkit-transform: translate(2px); }
+    20% { -webkit-transform: translate(-2px); }
+    40% { -webkit-transform: translate(1px); }
+    60% { -webkit-transform: translate(-1px); }
+    80% { -webkit-transform: translate(1px); }
+    100% { -webkit-transform: translate(0px); }
+}
+@-moz-keyframes shake {
+    0% { -moz-transform: translate(2px); }
+    20% { -moz-transform: translate(-2px); }
+    40% { -moz-transform: translate(1px); }
+    60% { -moz-transform: translate(-1px); }
+    80% { -moz-transform: translate(1px); }
+    100% { -moz-transform: translate(0px); }
+}
+@-o-keyframes shake {
+    0% { -o-transform: translate(2px); }
+    20% { -o-transform: translate(-2px); }
+    40% { -o-transform: translate(1px); }
+    60% { -o-transform: translate(-1px); }
+    80% { -o-transform: translate(1px); }
+    100% { -o-origin-transform: translate(0px); }
 }
 
