@@ -72,7 +72,10 @@ body{
         margin-bottom: 1rem;
         color: $charcoal;
         border-radius: 2px;
-     }
+    }
+    *:focus{
+        outline: $seafoam auto 5px;
+    }
 }
 
 app-root{

@@ -1,39 +1,50 @@
 @import "../../../styles/variables";
 
- :host{
-     display: block;
-     background-color: $purple;
-     min-height: 100vh;
-     width: 100%;
-     color: $white;
-     h1{
-         text-align: center;
-         &+p{
-             text-align: center;
-             padding-bottom: 5rem;
-             margin-top: -0.5rem;
-         }
-     }
-     .election-code{
-         max-width: 300px;
-         margin: 0 auto;
-         p{
-             text-align: center;
-         }
-         label, input, button{
-            display: block;
-            width: 100%;
-         }
-         label{
+:host{
+    display: block;
+    background-color: $purple;
+    min-height: 100vh;
+    width: 100%;
+    color: $white;
+        h1{
+            text-align: center;
+            font-size: 4rem;
             font-weight: 300;
-            margin-bottom: 0.25rem;
-         }
-         input{
-            text-transform: uppercase;
-         }
-         button{
-             color: $white;
-             border-color: $white;
-         }
-     }
- }
+            margin: 3rem 0;
+        }
+        .marketing{
+        p{
+            &:first-of-type{
+                text-align: center;
+                font-size: 4rem;
+            }
+        }
+    }
+    .election-code{
+        max-width: 320px;
+        margin: 3rem auto;
+        border: 3px solid darken($purple, 5%);
+        border-radius: 0.25rem;
+        padding: 1rem;
+        p{
+            text-align: center;
+            font-weight: normal;
+        }
+        label, input, button{
+        display: block;
+        width: 100%;
+        }
+        label{
+        font-weight: 300;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+        }
+        input{
+        text-transform: uppercase;
+        }
+        button{
+            color: $white;
+            border-color: $white;
+        }
+    }
+}
