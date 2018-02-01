@@ -53,6 +53,26 @@ body{
         margin: 0 auto;
         padding: 0 1rem;
     }
+    button{
+        margin: 0;
+        background: transparent;
+        border: 2px solid $charcoal;
+        border-radius: 3px;
+        padding: 0.75rem 1.5rem;
+        text-align: center;
+        color: $charcoal;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    input{
+        padding: 0.75rem;
+        font-size: 16px;
+        border: none;
+        margin-bottom: 1rem;
+        color: $charcoal;
+        border-radius: 2px;
+     }
 }
 
 app-root{

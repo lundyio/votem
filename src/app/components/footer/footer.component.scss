@@ -1,0 +1,11 @@
+@import "../../../styles/variables";
+
+:host{
+    color: $white;
+    display: block;
+    padding: 3rem 0;
+    p{
+        text-align: right;
+        font-size: 0.75rem;
+    }
+}

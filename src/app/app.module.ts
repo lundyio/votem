@@ -11,12 +11,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: 'landing', component: LandingComponent },
   { path: 'vote', component: VoteComponent },
   { path: 'admin', component: AdminComponent },
   //{ path: 'vote/:id', component: ArticleComponent },
   { path: '404', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: '',   redirectTo: 'landing', pathMatch: 'full' },
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
