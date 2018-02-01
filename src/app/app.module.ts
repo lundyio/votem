@@ -7,6 +7,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
     AdminComponent,
     VoteComponent,
     LandingComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

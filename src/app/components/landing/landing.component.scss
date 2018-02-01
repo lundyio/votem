@@ -1,0 +1,9 @@
+@import "../../../styles/variables";
+
+ :host{
+     display: block;
+     background-color: $purple;
+     height: 100%;
+     widows: 100%;
+     color: $white;
+ }
