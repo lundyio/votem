@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<app-header parent="login"></app-header>
+<section>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="login-wrapper">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" ngModel required #username="ngModel" [ngClass]="{'shake': invalid}">
+    <label for="password">Password</label>
+    <input id="password" name="password"  type="password" ngModel required #password="ngModel" [ngClass]="{'shake': invalid}">
+    <div class="validation" *ngIf="invalid">
+      <span>Your username or password is not correct.</span>
+    </div>
+    <button type="submit">Login</button>
+    <p (click)="tooltip = !tooltip" tabindex="0">Did you forget you username or password?</p>
+  </form>
+  <div class="tooltip" *ngIf="tooltip">
+    <p>Well, here's the deal. This is fake, so maybe try admin/password.</p>
+  </div>
+</section>
+<app-footer></app-footer>
