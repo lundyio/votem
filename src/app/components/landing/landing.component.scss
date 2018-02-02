@@ -6,13 +6,13 @@
     min-height: 100vh;
     width: 100%;
     color: $white;
-        h1{
-            text-align: center;
-            font-size: 4rem;
-            font-weight: 300;
-            margin: 3rem 0;
-        }
-        .marketing{
+    h1{
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 300;
+        margin: 3rem 0;
+    }
+    .marketing{
         p{
             &:first-of-type{
                 text-align: center;
@@ -30,17 +30,12 @@
             text-align: center;
             font-weight: normal;
         }
-        label, input, button{
-        display: block;
-        width: 100%;
-        }
-        label{
-        font-weight: 300;
-        margin-bottom: 0.25rem;
-        font-size: 0.875rem;
+        button{
+            display: block;
+            width: 100%;
         }
         input{
-        text-transform: uppercase;
+            text-transform: uppercase;
         }
         button{
             color: $white;

@@ -18,8 +18,8 @@
   <div class="election-code">
     <p>We don't have any public elections running, do you have a private election code?</p>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-        <label for="code">Election Code</label>
-        <input type="text" name="code" ngModel required #code="ngModel" [ngClass]="{'shake': invalid}" />
+        <label for="code" for="code">Election Code</label>
+        <input id="code" type="text" name="code" ngModel required #code="ngModel" [ngClass]="{'shake': invalid}" />
         <div class="validation" *ngIf="invalid">
           <span>This election code is not working.</span>
         </div>

@@ -74,6 +74,12 @@ body{
         margin-bottom: 1rem;
         color: $charcoal;
         border-radius: 2px;
+        width: 100%;
+    }
+    label{
+        font-weight: 300;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
     }
     *:focus{
         outline: $seafoam auto 5px;
