@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-election',
@@ -15,7 +16,7 @@ export class NewElectionComponent implements OnInit {
   urlBase: string = environment.apiUrl;
   error: boolean = false;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   onSubmit(f){
     this.submitted = false;
@@ -28,7 +29,7 @@ export class NewElectionComponent implements OnInit {
         .subscribe(
           (res) => {
             if(res.status == 200){
-              console.log(res);
+              this.router.navigate(['admin']);
             } else {
               this.error = true;
             }

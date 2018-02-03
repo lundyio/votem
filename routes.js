@@ -16,6 +16,8 @@ router.get('/get', function(req, res){
  */
 router.post('/lookup', function(req, res, status){
 
+    //rewrite this to use elections data
+
     var codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
 
     console.log()
@@ -35,15 +37,20 @@ router.post('/save/election', function(req, res, status){
 
     var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
 
-    elections.push(req.body);
-    fs.writeFile('./data/elections.json', JSON.stringify(elections), 'utf8', function(){
-        console.log(elections);
-    });
+    var dupe = false
 
-    if(elections.elections){
-        res.send('All Good');
-    } else {
-        res.status(404).send('Code Not Found');
+    for (i = 0; i < elections.length; i++) { 
+        if(elections[i].code === req.body.code){
+            res.status(409).send('Code Already Exists');
+            dupe = true;
+        }
+    }
+
+    if(!dupe){
+        elections.push(req.body);
+        fs.writeFile('./data/elections.json', JSON.stringify(elections), 'utf8', function(){
+            res.status(200).send('Successfully Added Election');
+        });
     }
 
 });
