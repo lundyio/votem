@@ -3,9 +3,6 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 
-import fontawesome from '@fortawesome/fontawesome';
-import { faShieldCheck } from '@fortawesome/fontawesome-pro-solid';
-
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -20,6 +17,7 @@ export class LandingComponent implements OnInit {
   constructor(private http: Http) { }
 
   onSubmit(f){
+    console.log(f);
     if(f.invalid){
       this.invalid = true;
     } else {
@@ -37,14 +35,10 @@ export class LandingComponent implements OnInit {
           (err) => {
             
         });
-
-      console.log(f.value);
     }
   }
 
   ngOnInit() {
-
-    fontawesome.icon(faShieldCheck);
 
   }
 

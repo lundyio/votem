@@ -40,6 +40,10 @@
         button{
             color: $white;
             border-color: $white;
+            &:hover{
+                color: $seafoam;
+                border-color: $seafoam;
+            }
         }
         .validation{
             margin: -0.75rem 0 1rem 0;
