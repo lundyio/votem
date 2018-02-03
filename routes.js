@@ -12,7 +12,7 @@ router.get('/get', function(req, res){
 });
 
 /**
- * Send Email
+ * Search Active Elections
  */
 router.post('/lookup', function(req, res, status){
 
@@ -22,6 +22,26 @@ router.post('/lookup', function(req, res, status){
 
     if(codes[req.body.code]){
         res.send(codes[req.body.code]);
+    } else {
+        res.status(404).send('Code Not Found');
+    }
+
+});
+
+/**
+ * Create New Election
+ */
+router.post('/save/election', function(req, res, status){
+
+    var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
+
+    elections.push(req.body);
+    fs.writeFile('./data/elections.json', JSON.stringify(elections), 'utf8', function(){
+        console.log(elections);
+    });
+
+    if(elections.elections){
+        res.send('All Good');
     } else {
         res.status(404).send('Code Not Found');
     }
