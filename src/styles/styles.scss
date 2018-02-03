@@ -15,75 +15,77 @@ body{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 16px;
     color: $charcoal;
-    p{
-        font-weight: 300;
-        margin: 0;
-        padding: 1rem 0;
-        &+p{
-            padding-top: 0;
-        }
-        a{
-            font-weight: 400;
-            color: $purple;
-            text-decoration: none;
-            &:hover{
-                color: darken($purple, 10%);
-                .fa-external-link{
-                    color: darken($seafoam, 10%);
-                }
-            }
-            .fa-external-link{
-                margin-left: 4px;
-            }
-        }
+}
+
+p{
+    font-weight: 300;
+    margin: 0;
+    padding: 1rem 0;
+    &+p{
+        padding-top: 0;
     }
-    h1, h2, h3, h4, h5, h6{
+    a{
         font-weight: 400;
-        margin: 0;
-        padding: 1rem 0;
-        &+p{
-            padding-top: 0;
-        }
-    }
-    img{
-        max-width: 100%;
-    }
-    section{
-        max-width: 1024px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
-    button{
-        margin: 0;
-        background: transparent;
-        border: 2px solid $charcoal;
-        border-radius: 3px;
-        padding: 0.75rem 1.5rem;
-        text-align: center;
-        color: $charcoal;
+        color: $purple;
+        text-decoration: none;
         &:hover{
-            cursor: pointer;
-            border-color: $seafoam !important;
-            color: $seafoam !important;
+            color: darken($purple, 10%);
+            .fa-external-link{
+                color: darken($seafoam, 10%);
+            }
+        }
+        .fa-external-link{
+            margin-left: 4px;
         }
     }
-    input{
-        padding: 0.75rem;
-        font-size: 16px;
-        border: none;
-        margin-bottom: 1rem;
-        color: $charcoal;
-        border-radius: 2px;
-        width: 100%;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 400;
+    margin: 0;
+    padding: 1rem 0;
+    &+p{
+        padding-top: 0;
     }
-    label{
-        font-weight: 300;
-        margin-bottom: 0.25rem;
-        font-size: 0.875rem;
+}
+img{
+    max-width: 100%;
+}
+section{
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+button{
+    margin: 0;
+    background: transparent;
+    border: 2px solid $charcoal;
+    border-radius: 3px;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    color: $charcoal;
+    transition: all 0.2s;
+    &:hover{
+        cursor: pointer;
+        border-color: $seafoam;
+        color: $seafoam;
     }
-    *:focus{
-        outline: $seafoam auto 5px;
-    }
+}
+input{
+    padding: 0.75rem;
+    font-size: 16px;
+    border: none;
+    margin-bottom: 1rem;
+    color: $charcoal;
+    border-radius: 2px;
+    width: 100%;
+}
+label{
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+}
+*:focus{
+    outline: $seafoam auto 5px;
 }
 
 app-root{
