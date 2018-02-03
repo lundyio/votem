@@ -1,9 +1,17 @@
 <section>
   <div class="row">
     <div class="col-4">
-      <img src="./assets/img/logo-knock-out.svg" />
+      <img src="./assets/img/logo-knock-out.svg" [routerLink]="'/'" />
     </div>
-    <div class="col-4">
+    <div class="col-4" (mouseenter)="hover = true" (mouseleave)="hover = false">
+      <div class="avatar" [ngClass]="{show: hover}" *ngIf="parent && parent === 'admin'">
+        <p>Wylie Coyote</p>
+        <img src="./assets/img/avatar.jpg" />
+        <div (click)="authService.logOut()">
+          <p>Logout</p>
+          <i class="far fa-sign-out"></i>
+        </div>
+      </div>
       <button [routerLink]="['/admin/login']" *ngIf="showLoginButton">Login</button>
     </div>
   </div>

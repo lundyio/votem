@@ -5,15 +5,73 @@
     padding: 1rem 0;
     img{
         max-height: 50px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .row{
+        align-items: center;
     }
     .col-4:last-of-type{
         text-align: right;
         button{
             color: $white;
             border-color: $white;
+            &:hover{
+                color: $seafoam;
+                border-color: $seafoam;
+            }
+        }
+    }
+}
+
+:host-context(app-admin){
+    background-color: $purple;
+    padding: 0.75rem 0;
+    img{
+        max-height: 25px;
+    }
+    .col-4:last-of-type{
+        overflow: hidden;
+        button{
+            color: $purple;
+            border-color: $purple;
+        }
+        .avatar{
             position: relative;
-            top: 50%;
-            transform: translateY(-50%);
+            transition: transform .25s;
+            transform: translateY(0);
+            p{
+                display: inline-block;
+                font-weight: normal;
+                color: $white;
+                padding: 0;
+                margin: 0;
+                vertical-align: middle;
+            }
+            img{
+                border-radius: 50%;
+                border: 2px solid $seafoam;
+                overflow: hidden;
+                margin-left: 0.5rem;
+            }
+            .fa-sign-out{
+                display: inline-block;
+                vertical-align: middle;
+                color: $white;
+                font-size: 1.25rem;
+                margin-left: 0.5rem;
+            }
+            div{
+                position: absolute;
+                bottom: -1.5rem;
+                right: 0;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+            &.show{
+                transform: translateY(-100%);
+            }
         }
     }
 }
