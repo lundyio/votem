@@ -78,14 +78,55 @@ input{
     color: $charcoal;
     border-radius: 2px;
     width: 100%;
+    &[type="checkbox"]{
+        text-align: left;
+        width: auto;
+        vertical-align: middle;
+        margin-bottom: 1rem;
+        &+label{
+            margin: 0 0 1rem 0.25rem;
+            text-align: left;
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+    }
 }
 label{
     font-weight: 300;
     margin-bottom: 0.25rem;
     font-size: 0.875rem;
+    display: block;
 }
 *:focus{
     outline: $seafoam auto 5px;
+}
+.validation{
+    margin: -0.75rem 0 1rem 0;
+    span{
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: $danger;
+    }
+}
+.ng-invalid{
+    &.ng-touched{
+        border-color: $danger
+    }
+}
+.submitted{
+    .ng-invalid{
+        border-color: $danger
+    }
+}
+
+app-admin{
+    input{
+        border: 1px solid $purple;
+    }
+    *:focus{
+        outline: $purple auto 5px;
+    }
 }
 
 app-root{

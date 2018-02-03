@@ -1,0 +1,46 @@
+@import "../../../styles/variables";
+
+.active-elections, .finished-elections, .new-election{
+    border: 2px solid $purple;
+    border-radius: 3px;
+    padding: 1rem;
+    margin: 3rem 0 0 0;
+    .section-head{
+        padding: 0 0 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2{
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        button{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+            color: $white;
+            background-color: $purple;
+            border-color: $purple;
+            &:hover{
+                color: $white;
+                background-color: darken($purple, 10%);
+                border-color: darken($purple, 10%);
+            }
+        }
+    }
+    button{
+        display: inline-block;
+        vertical-align: middle;
+        color: $white;
+        background-color: $purple;
+        border-color: $purple;
+        &:hover{
+            color: $white;
+            background-color: darken($purple, 10%);
+            border-color: darken($purple, 10%);
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+@import "../../../styles/section";
+
+:host{
+    form{
+        .row{
+            &:last-of-type{
+                text-align: right;
+            }
+        }
+    }
+}

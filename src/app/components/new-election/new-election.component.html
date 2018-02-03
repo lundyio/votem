@@ -1,3 +1,54 @@
-<p>
-  new-election works!
-</p>
+<section>
+  <div class="new-election">
+    <div class="section-head">
+      <h2>Creat New Election</h2>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid}">
+      <div class="row">
+        <div class="col-4">
+          <label for="name">Election Name</label>
+          <input type="text" id="name" name="name" ngModel required #name="ngModel" [ngClass]="{shake: name.invalid && name.touched }">
+          <div class="validation" *ngIf="(name.invalid && name.touched) || (name.invalid && submitted) ">
+            <span>An election name is required.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" name="startDate" ngModel required #startDate="ngModel" [ngClass]="{shake: startDate.invalid && startDate.touched }" placeholder="MM/DD/YYYY">
+          <div class="validation" *ngIf="(startDate.invalid && startDate.touched) || (startDate.invalid && submitted)">
+              <span>A start date is required.</span>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" name="endDate" ngModel required #endDate="ngModel" [ngClass]="{shake: endDate.invalid && endDate.touched }" placeholder="MM/DD/YYYY">
+          <div class="validation" *ngIf="(endDate.invalid && endDate.touched) || (endDate.invalid && submitted)">
+            <span>An end date is required.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <input id="private" type="checkbox" name="private" ngModel #private="ngModel">
+          <label for="private">Make this election private.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4" *ngIf="private.value">
+          <label for="code">Access Code</label>
+          <input type="text" id="code" name="code" ngModel #code="ngModel" [ngClass]="{shake: code.invalid && code.touched }" required="private.value">
+          <div class="validation" *ngIf="(code.invalid && code.touched) || (code.invalid && submitted) ">
+            <span>An access code is required.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

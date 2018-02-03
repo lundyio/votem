@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-new-election',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewElectionComponent implements OnInit {
 
+  submitted: boolean = false;
+
   constructor() { }
 
-  ngOnInit() {
+  onSubmit(f){
+    this.submitted = false;
+    window.setTimeout(()=>{this.submitted = true;});
+    console.log(f);
+  }
+
+  ngOnInit() {  
+
   }
 
 }
