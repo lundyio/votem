@@ -5,20 +5,30 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+import { AuthGuard } from './services/auth-guard/auth-guard.service';
+
 import { AppComponent } from './app.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NewElectionComponent } from './components/new-election/new-election.component';
+import { ElectionResultsComponent } from './components/election-results/election-results.component';
 
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'vote', component: VoteComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard],
+    children: [
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'election/results/:id', component: ElectionResultsComponent },
+    { path: 'election/new', component: NewElectionComponent }
+  ]},
   { path: 'admin/login', component: LoginComponent },
   //{ path: 'vote/:id', component: ArticleComponent },
   { path: '404', component: PageNotFoundComponent },
@@ -37,7 +47,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewElectionComponent,
+    ElectionResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +61,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

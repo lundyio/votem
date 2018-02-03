@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { ElectionResultsComponent } from '../election-results/election-results.component';
 
 @Component({
   selector: 'app-footer',
@@ -8,15 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   sticky: boolean = false;
-  appRoot: any;
+  appRoot: any = this.el.nativeElement.parentNode;
+  windowHeight: any = window.innerHeight;
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
   ngOnInit() {
 
-    this.appRoot = document.getElementsByTagName('app-root')[0];
-
-    if( this.appRoot.offsetHeight > window.innerHeight){
+    if(this.appRoot.offsetHeight > this.windowHeight){
       this.sticky = false;
     } else {
       this.sticky = true;

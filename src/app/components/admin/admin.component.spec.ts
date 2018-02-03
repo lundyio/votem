@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { AdminComponent } from './admin.component';
+import { Component } from '@angular/core';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -8,7 +9,8 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ AdminComponent, MockHeaderComponent, MockFooterComponent ],
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   }));
@@ -23,3 +25,17 @@ describe('AdminComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  selector: 'app-header',
+  template: ''
+})
+class MockHeaderComponent {
+}
+
+@Component({
+  selector: 'app-footer',
+  template: ''
+})
+class MockFooterComponent {
+}

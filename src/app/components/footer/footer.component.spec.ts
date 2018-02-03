@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
@@ -16,10 +15,23 @@ describe('FooterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.autoDetectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should stick to the bottom if the content is smaller than the window', () => {
+    component.windowHeight = 1000;
+    component.ngOnInit();
+    expect(component.sticky).toBeTruthy();
+  });
+
+  it('should stick to the content if the content is larger than the window', () => {
+    component.windowHeight = 0;
+    component.ngOnInit();
+    expect(component.sticky).toBeFalsy();
+  });
+
 });
