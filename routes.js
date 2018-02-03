@@ -39,9 +39,14 @@ router.post('/save/election', function(req, res, status){
 
     var dupe = false
 
+    req.body.id = req.body.name.toLowerCase().replace(/ /g, '-');
+
     for (i = 0; i < elections.length; i++) { 
-        if(elections[i].code === req.body.code){
+        if(elections[i].code === req.body.code ){
             res.status(409).send('Code Already Exists');
+            dupe = true;
+        } else if(elections[i].id === req.body.id){
+            res.status(409).send('Election Name Already Exists');
             dupe = true;
         }
     }
