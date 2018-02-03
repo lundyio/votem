@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { AuthService } from '../../services/auth/auth.service';
+import { CanActivate, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   tooltip: boolean = false;
   invalid: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit(f){
     if(f.invalid){
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['/admin']);
+    }
 
   }
 

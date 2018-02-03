@@ -8,11 +8,11 @@ export class AuthService {
   constructor(private router: Router) { }
 
   startSession(){
-    localStorage.setItem('authenticated', 'true');
+    sessionStorage.setItem('authenticated', 'true');
   }
 
   endSession(){
-    localStorage.removeItem('authenticated');
+    sessionStorage.removeItem('authenticated');
   }
 
   logIn(){
@@ -23,6 +23,15 @@ export class AuthService {
   logOut(){
     this.endSession();
     this.router.navigate(['/landing']);
+  }
+
+  isLoggedIn(){
+    if(sessionStorage.getItem('authenticated')){
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
 }
