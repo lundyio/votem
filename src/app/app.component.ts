@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import fontawesome from '@fortawesome/fontawesome';
+import {faShieldCheck} from '@fortawesome/fontawesome-pro-solid';
+import {faSignOutAlt} from '@fortawesome/fontawesome-pro-regular';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+
+  ngOnInit() {
+
+    fontawesome.icon(faShieldCheck);
+    fontawesome.icon(faSignOutAlt);
+
+  }
+
 }
