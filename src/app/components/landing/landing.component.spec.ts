@@ -20,11 +20,27 @@ describe('LandingComponent', () => {
     fixture = TestBed.createComponent(LandingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    spyOn(component, 'onSubmit').and.callThrough();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should submit the button is clocked', () => {
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    expect(component.onSubmit).toHaveBeenCalled();
+  });
+
+  it('should set invalid to true if the form is invalid', () => {
+    let f = {
+      invalid: true
+    }
+    component.onSubmit(f);
+    expect(component.invalid).toBeTruthy();;
+  });
+
 });
 
 @Component({
