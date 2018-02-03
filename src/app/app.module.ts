@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
 
 import { AppComponent } from './app.component';
 import { VoteComponent } from './components/vote/vote.component';
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
