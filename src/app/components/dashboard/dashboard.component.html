@@ -2,7 +2,48 @@
   <div class="active-elections">
     <div class="section-head">
       <h2>Active Elections</h2>
-      <button>Create New</button>
+      <button [routerLink]="'/admin/election/new'">Create New</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Election Name</th>
+          <th>Ballots Collected</th>
+          <th>Closing Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Election 1</td>
+          <td>1234567</td>
+          <td>7:00PM Mon March 1st</td>
+        </tr>
+        <tr>
+          <td>Election 1</td>
+          <td>1234567</td>
+          <td>7:00PM Mon March 1st</td>
+        </tr>
+        <tr>
+          <td>Election 1</td>
+          <td>1234567</td>
+          <td>7:00PM Mon March 1st</td>
+        </tr>
+        <tr>
+          <td>Election 1</td>
+          <td>1234567</td>
+          <td>7:00PM Mon March 1st</td>
+        </tr>
+        <tr>
+          <td>Election 1</td>
+          <td>1234567</td>
+          <td>7:00PM Mon March 1st</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="finished-elections">
+    <div class="section-head">
+      <h2>Finished Elections</h2>
     </div>
     <table>
       <thead>

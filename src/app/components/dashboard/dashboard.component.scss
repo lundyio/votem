@@ -15,7 +15,11 @@
         }
         tr{
             &:nth-child(even){
-                background-color: lighten($purple, 57%);      
+                background-color: lighten($purple, 57%);  
+            }
+            &:hover{
+                background-color: lighten($seafoam, 40%);
+                cursor: pointer;
             }
         }
     }
@@ -47,7 +51,7 @@
         }
     }
 
-    .active-elections{
+    .active-elections, .finished-elections{
         border: 2px solid $purple;
         border-radius: 3px;
         padding: 1rem;
