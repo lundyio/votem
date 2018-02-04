@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import {IMyDrpOptions} from 'mydaterangepicker';
 
 @Component({
   selector: 'app-new-election',
@@ -15,6 +16,12 @@ export class NewElectionComponent implements OnInit {
   submitted: boolean = false;
   urlBase: string = environment.apiUrl;
   error: boolean = false;
+  errorMessage: string;
+
+  dateRangeOptions: IMyDrpOptions = {
+    inline: true,
+    dateFormat: 'mm.dd.yyyy',
+  };
 
   constructor(private http: Http, private router: Router) { }
 
@@ -30,12 +37,18 @@ export class NewElectionComponent implements OnInit {
           (res) => {
             if(res.status == 200){
               this.router.navigate(['admin']);
-            } else {
-              this.error = true;
             }
           },
           (err) => {
-            
+            console.log(err._body);
+            this.error = true;
+            if(err._body === 'Election Code'){
+              this.errorMessage = 'This election code has already been used.'
+            } else if(err._body === 'Election Name') {
+              this.errorMessage = 'This election name has already been used.'
+            } else {
+              this.errorMessage = 'There was an issue creating you election please contact the administrator if the issue persists.'
+            }
         });
     }
 

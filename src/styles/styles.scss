@@ -120,6 +120,10 @@ label{
     }
 }
 
+.error{
+    color: $danger;
+}
+
 app-admin{
     input{
         border: 1px solid $purple;

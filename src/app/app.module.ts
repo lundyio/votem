@@ -8,6 +8,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 
+//Date Range Component
+import { MyDateRangePickerModule } from 'mydaterangepicker';
+
 import { AppComponent } from './app.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -19,6 +22,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewElectionComponent } from './components/new-election/new-election.component';
 import { ElectionResultsComponent } from './components/election-results/election-results.component';
+import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
 
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
@@ -50,13 +54,15 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     NewElectionComponent,
-    ElectionResultsComponent
+    ElectionResultsComponent,
+    NewBallotComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
+    MyDateRangePickerModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only

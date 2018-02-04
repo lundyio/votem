@@ -1,1 +1,112 @@
-[{"code":"2018","endDate":"2018-02-01","name":"Election 1","private":true,"startDate":"2018-01-08"},{"name":"new Test name","startDate":"2018-02-01","endDate":"2018-02-13","private":true,"code":"15651","id":"new-test-name"}]
+[  
+    {  
+        "name":"Ohio Governor",
+        "private":"",
+        "dateRange":{  
+            "beginDate":{  
+                "year":2018,
+                "month":2,
+                "day":1
+            },
+            "beginJsDate":"2018-02-01T05:00:00.000Z",
+            "endDate":{  
+                "year":2018,
+                "month":2,
+                "day":28
+            },
+            "endJsDate":"2018-02-28T05:00:00.000Z",
+            "formatted":"02.01.2018 - 02.28.2018",
+            "beginEpoc":1517461200,
+            "endEpoc":1519794000
+        },
+        "id":"ohio-governor"
+    },
+    {  
+        "name":"Florida Governor",
+        "private":"",
+        "dateRange":{  
+            "beginDate":{  
+                "year":2018,
+                "month":1,
+                "day":30
+            },
+            "beginJsDate":"2018-01-30T05:00:00.000Z",
+            "endDate":{  
+                "year":2018,
+                "month":2,
+                "day":14
+            },
+            "endJsDate":"2018-02-14T05:00:00.000Z",
+            "formatted":"01.30.2018 - 02.14.2018",
+            "beginEpoc":1517288400,
+            "endEpoc":1518584400
+        },
+        "id":"florida-governor"
+    },
+    {  
+        "name":"California Governor",
+        "private":"",
+        "dateRange":{  
+            "beginDate":{  
+                "year":2018,
+                "month":2,
+                "day":15
+            },
+            "beginJsDate":"2018-02-15T05:00:00.000Z",
+            "endDate":{  
+                "year":2018,
+                "month":3,
+                "day":10
+            },
+            "endJsDate":"2018-03-10T05:00:00.000Z",
+            "formatted":"02.15.2018 - 03.10.2018",
+            "beginEpoc":1518670800,
+            "endEpoc":1520658000
+        },
+        "id":"california-governor"
+    },
+    {  
+        "name":"New York Governor",
+        "private":"",
+        "dateRange":{  
+            "beginDate":{  
+                "year":2018,
+                "month":2,
+                "day":7
+            },
+            "beginJsDate":"2018-02-07T05:00:00.000Z",
+            "endDate":{  
+                "year":2018,
+                "month":3,
+                "day":9
+            },
+            "endJsDate":"2018-03-09T05:00:00.000Z",
+            "formatted":"02.07.2018 - 03.09.2018",
+            "beginEpoc":1517979600,
+            "endEpoc":1520571600
+        },
+        "id":"new-york-governor"
+    },
+    {  
+        "name":"US President",
+        "private":"",
+        "dateRange":{  
+            "beginDate":{  
+                "year":2016,
+                "month":2,
+                "day":2
+            },
+            "beginJsDate":"2016-02-02T05:00:00.000Z",
+            "endDate":{  
+                "year":2016,
+                "month":2,
+                "day":19
+            },
+            "endJsDate":"2016-02-19T05:00:00.000Z",
+            "formatted":"02.02.2016 - 02.19.2016",
+            "beginEpoc":1454389200,
+            "endEpoc":1455858000
+        },
+        "id":"us-president"
+    }
+]
