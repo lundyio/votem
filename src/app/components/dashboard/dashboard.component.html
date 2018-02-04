@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let election of activeElections">
+        <tr *ngFor="let election of activeElections" [routerLink]="'/admin/election/details/' + election.id">
           <td>
             <div class="new" *ngIf="election.newish">
               <i class="fas fa-pennant"></i>
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let election of futureElections">
+          <tr *ngFor="let election of futureElections" [routerLink]="'/admin/election/details/' + election.id">
             <td>
               <div class="new" *ngIf="election.newish">
                 <i class="fas fa-pennant"></i>
@@ -72,7 +72,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let election of pastElections">
+        <tr *ngFor="let election of pastElections" [routerLink]="'/admin/election/details/' + election.id">
           <td>{{election.name}}</td>
           <td></td>
           <td>{{election.startDate | date}}</td>
