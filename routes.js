@@ -46,6 +46,7 @@ router.post('/save/election', function(req, res, status){
     var dupe = false
 
     req.body.id = req.body.name.toLowerCase().replace(/ /g, '-');
+    req.body.created = new Date;
 
     for (i = 0; i < elections.length; i++) { 
         if( req.body.code && elections[i].code === req.body.code ){
@@ -64,6 +65,21 @@ router.post('/save/election', function(req, res, status){
         fs.writeFile('./data/elections.json', JSON.stringify(elections), 'utf8', function(){
             res.status(200).send('Successfully Added Election');
         });
+    }
+
+});
+
+/**
+ * Get Elections
+ */
+router.get('/get/elections', function(req, res, status){
+
+    var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
+
+    if(elections.length > 0){
+        res.status(200).send(elections);
+    } else {
+        res.status(404).send('No Elections Found');
     }
 
 });

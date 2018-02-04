@@ -9,34 +9,22 @@
         <tr>
           <th>Election Name</th>
           <th>Ballots Collected</th>
-          <th>Closing Date</th>
+          <th>Start Date</th>
+          <th>End Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
+        <tr *ngFor="let election of activeElections">
+          <td>
+            <div class="new" *ngIf="election.newish">
+              <i class="fas fa-pennant"></i>
+              <span>NEW</span>
+            </div>
+            {{election.name}}
+          </td>
+          <td></td>
+          <td>{{election.startDate | date}}</td>
+          <td>{{election.endDate | date}}</td>
         </tr>
       </tbody>
     </table>
@@ -51,34 +39,21 @@
             <th>Election Name</th>
             <th>Ballots Collected</th>
             <th>Start Date</th>
-
+            <th>End Date</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Election 1</td>
-            <td>1234567</td>
-            <td>7:00PM Mon March 1st</td>
-          </tr>
-          <tr>
-            <td>Election 1</td>
-            <td>1234567</td>
-            <td>7:00PM Mon March 1st</td>
-          </tr>
-          <tr>
-            <td>Election 1</td>
-            <td>1234567</td>
-            <td>7:00PM Mon March 1st</td>
-          </tr>
-          <tr>
-            <td>Election 1</td>
-            <td>1234567</td>
-            <td>7:00PM Mon March 1st</td>
-          </tr>
-          <tr>
-            <td>Election 1</td>
-            <td>1234567</td>
-            <td>7:00PM Mon March 1st</td>
+          <tr *ngFor="let election of futureElections">
+            <td>
+              <div class="new" *ngIf="election.newish">
+                <i class="fas fa-pennant"></i>
+                <span>NEW</span>
+              </div>
+              {{election.name}}
+            </td>
+            <td></td>
+            <td>{{election.startDate | date}}</td>
+            <td>{{election.endDate | date}}</td>
           </tr>
         </tbody>
       </table>
@@ -92,34 +67,16 @@
         <tr>
           <th>Election Name</th>
           <th>Ballots Collected</th>
-          <th>Closing Date</th>
+          <th>Start Date</th>
+          <th>End Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
-        </tr>
-        <tr>
-          <td>Election 1</td>
-          <td>1234567</td>
-          <td>7:00PM Mon March 1st</td>
+        <tr *ngFor="let election of pastElections">
+          <td>{{election.name}}</td>
+          <td></td>
+          <td>{{election.startDate | date}}</td>
+          <td>{{election.endDate | date}}</td>
         </tr>
       </tbody>
     </table>
