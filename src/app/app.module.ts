@@ -32,7 +32,8 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'election/results/:id', component: ElectionResultsComponent },
-    { path: 'election/new', component: NewElectionComponent }
+    { path: 'election/new', component: NewElectionComponent },
+    { path: 'ballot/new', component: NewBallotComponent }
   ]},
   { path: 'admin/login', component: LoginComponent },
   { path: '404', component: PageNotFoundComponent },
