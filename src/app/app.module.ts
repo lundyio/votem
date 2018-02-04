@@ -26,7 +26,7 @@ import { NewBallotComponent } from './components/new-ballot/new-ballot.component
 
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
-  { path: 'vote', component: VoteComponent },
+  { path: 'vote/:id', component: VoteComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard],
     children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -35,7 +35,6 @@ const appRoutes: Routes = [
     { path: 'election/new', component: NewElectionComponent }
   ]},
   { path: 'admin/login', component: LoginComponent },
-  //{ path: 'vote/:id', component: ArticleComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '',   redirectTo: 'landing', pathMatch: 'full' },
   { path: 'login',   redirectTo: 'admin/login', pathMatch: 'full' },

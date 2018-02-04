@@ -89,7 +89,8 @@
     },
     {  
         "name":"US President",
-        "private":"",
+        "private":true,
+        "code": "potus",
         "dateRange":{  
             "beginDate":{  
                 "year":2016,

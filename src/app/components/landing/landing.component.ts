@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +15,7 @@ export class LandingComponent implements OnInit {
   model: any;
   urlBase: string = environment.apiUrl;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   onSubmit(f){
     console.log(f);
@@ -27,7 +28,7 @@ export class LandingComponent implements OnInit {
         .subscribe(
           (res) => {
             if(res.status == 200){
-              console.log(res);
+              this.router.navigate(['/vote/' + res['_body']]);
             } else {
               this.invalid = true;
             }

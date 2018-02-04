@@ -18,13 +18,19 @@ router.post('/lookup', function(req, res, status){
 
     //rewrite this to use elections data
 
-    var codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
+    var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
 
-    console.log()
+    var match = false
 
-    if(codes[req.body.code]){
-        res.send(codes[req.body.code]);
-    } else {
+    for (i = 0; i < elections.length; i++) { 
+        if( req.body.code && elections[i].code === req.body.code ){
+            res.status(200).send(elections[i].id);
+            match = true;
+            break;
+        }
+    }
+
+    if(!match){
         res.status(404).send('Code Not Found');
     }
 
