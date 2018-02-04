@@ -23,7 +23,7 @@ router.post('/lookup', function(req, res, status){
     var match = false
 
     for (i = 0; i < elections.length; i++) { 
-        if( req.body.code && elections[i].code === req.body.code ){
+        if( req.body.code && elections[i].code === req.body.code.toLowerCase() ){
             res.status(200).send(elections[i].id);
             match = true;
             break;

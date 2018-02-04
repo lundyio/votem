@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ElectionResultsComponent } from '../election-results/election-results.component';
 
 @Component({
   selector: 'app-footer',

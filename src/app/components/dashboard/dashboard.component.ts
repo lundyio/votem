@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
     // Show that elections are new for 10 minutes
     if( Math.floor(((now - created)/1000)/60) < 10){
       newish = true;
-      console.log(election);
     }
 
     // Sort Future Elections

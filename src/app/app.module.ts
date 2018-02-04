@@ -21,7 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewElectionComponent } from './components/new-election/new-election.component';
-import { ElectionResultsComponent } from './components/election-results/election-results.component';
+import { ElectionDetailsComponent } from './components/election-details/election-details.component';
 import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
 
 const appRoutes: Routes = [
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'election/results/:id', component: ElectionResultsComponent },
+    { path: 'election/details/:id', component: ElectionDetailsComponent },
     { path: 'election/new', component: NewElectionComponent },
     { path: 'ballot/new', component: NewBallotComponent }
   ]},
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     LoginComponent,
     DashboardComponent,
     NewElectionComponent,
-    ElectionResultsComponent,
+    ElectionDetailsComponent,
     NewBallotComponent
   ],
   imports: [
