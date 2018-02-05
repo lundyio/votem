@@ -24,13 +24,14 @@
   <div class="ballot-details">
     <div class="section-head">
       <h2>Ballot Details</h2>
+      <button [routerLink]="'/admin/ballot/' + election.id">Edit</button>
     </div>
     <div *ngIf="!election.ballot" class="no-ballot">
       <p>There is no ballot for this election please add one.</p>
       <button [routerLink]="'/admin/ballot/' + election.id">Add a Ballot</button>
     </div>
     <div *ngIf="election.ballot">
-
+      <app-ballot [election]="election"></app-ballot>
     </div>
   </div>
 </section>

@@ -74,7 +74,6 @@ export class NewBallotComponent implements OnInit {
         this.options.push(this.optionsCount)
       }
     }
-    
     this.model = this.election.ballot[i];
   }
 
@@ -86,6 +85,30 @@ export class NewBallotComponent implements OnInit {
   addOption(){
     this.options.push(this.optionsCount + 1)
     this.optionsCount++
+  }
+
+  move = function(array, index, delta) {
+    var newIndex = index + delta;
+    if (newIndex < 0  || newIndex == array.length) return; //Already at the top or bottom.
+    var indexes = [index, newIndex].sort(); //Sort the indixes
+    array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]); //Replace from lowest index, two elements, reverting the order
+  };
+
+  moveUp(i){
+    this.move(this.election.ballot, i, -1);
+  }
+
+  moveDown(i){
+    this.move(this.election.ballot, i, 1);
+  }
+
+  cancel(){
+    this.f.reset();
+    this.edit = false;
+    this.adding = false;
+    this.submitted = false;
+    this.options = [];
+    this.optionsCount = 0;
   }
 
   onSubmit(edit){

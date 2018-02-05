@@ -5,22 +5,13 @@
     .no-ballot{
         padding: 2rem 0 3rem 0;
         text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
     .new-questions{
         .col-2{
             display: flex;
-            button{
-                align-self: center;
-                background-color: $white;
-                color: $purple;
-            }
-        }
-        .add{
-            button{
-                align-self: center;
-                background-color: $white;
-                color: $purple;
-            }
         }
         .row:last-of-type{
             text-align: right;
@@ -32,6 +23,37 @@
             padding: 0 0 0 1rem;
             li{
                 padding-bottom: 0.5rem;
+                position: relative;
+            }
+        }
+    }
+    .ghost{
+        align-self: center;
+        background-color: $white !important;
+        color: $purple !important;
+    }
+    .controls{
+        display: flex;
+        padding: 0.5rem 0;
+        button{
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background-color: $white;
+            color: $purple;
+            border: 1px solid;
+            &:first-of-type{
+                border-right: 0;
+                border-radius: 3px 0 0 3px;
+                line-height: 1;
+            }
+            &:nth-child(2){
+                border-right: none;
+                border-left: 0;
+                border-radius: 0;
+            }
+            &:last-of-type{
+                border-left: 0;
+                border-radius: 0 3px 3px 0;
             }
         }
     }
