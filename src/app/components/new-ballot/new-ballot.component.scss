@@ -6,15 +6,33 @@
         padding: 2rem 0 3rem 0;
         text-align: center;
     }
-    .col-2{
-        display: flex;
-        button{
-            align-self: center;
-            background-color: $white;
-            color: $purple;
+    .new-questions{
+        .col-2{
+            display: flex;
+            button{
+                align-self: center;
+                background-color: $white;
+                color: $purple;
+            }
+        }
+        .add{
+            button{
+                align-self: center;
+                background-color: $white;
+                color: $purple;
+            }
+        }
+        .row:last-of-type{
+            text-align: right;
         }
     }
-    .row:last-of-type{
-        text-align: right;
+    .questions{
+        ol{
+            margin: 0;
+            padding: 0 0 0 1rem;
+            li{
+                padding-bottom: 0.5rem;
+            }
+        }
     }
 }

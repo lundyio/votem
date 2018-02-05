@@ -23,9 +23,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewElectionComponent } from './components/new-election/new-election.component';
 import { ElectionDetailsComponent } from './components/election-details/election-details.component';
 import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
-import { SelectOneComponent } from './components/select-one/select-one.component';
-import { SelectRankedComponent } from './components/select-ranked/select-ranked.component';
-import { SelectNComponent } from './components/select-n/select-n.component';
+import { BallotComponent } from './components/ballot/ballot.component';
+
 
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
@@ -59,9 +58,7 @@ const appRoutes: Routes = [
     NewElectionComponent,
     ElectionDetailsComponent,
     NewBallotComponent,
-    SelectOneComponent,
-    SelectRankedComponent,
-    SelectNComponent
+    BallotComponent
   ],
   imports: [
     BrowserModule,

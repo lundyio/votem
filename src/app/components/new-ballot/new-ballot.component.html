@@ -3,69 +3,84 @@
     <div class="section-head">
       <h2>Ballot: {{election.name}}</h2>
     </div>
-    <div class="no-ballot" *ngIf="!newQuestion">
-      <button (click)="newQuestion = true">Add a Question</button>
-    </div>
-    <div class="new-questions" *ngIf="newQuestion">
-      <form #f="ngForm" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid || error}">
-        <div class="row">
-          <div class="col-6">
-            <label for="question">Question</label>
-            <input type="text" id="question" name="question" ngModel #question="ngModel" [ngClass]="{shake: question.invalid && question.touched }" required>
-            <div class="validation" *ngIf="(question.invalid && question.touched) || (question.invalid && submitted) ">
-              <span>A question is required.</span>
+    <div class="row">
+      <div class="col-2 questions">
+        <h3>Questions</h3>
+        <ol>
+          <li *ngFor="let q of election.ballot; let i = index" (click)="editQuestion(i)">{{q.question}}</li>
+        </ol>
+      </div>
+      <div class="col-6">
+        <div class="no-ballot" *ngIf="!adding">
+          <button (click)="adding = true">Add a Question</button>
+        </div>
+        
+        <form #f="ngForm" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid || error}">
+          <div class="new-questions" *ngIf="adding">
+            <div class="row">
+              <div class="col-8">
+                <label for="question">Question</label>
+                <input type="text" id="question" name="question" ngModel #question="ngModel" [(ngModel)]="model.question" [ngClass]="{shake: question.invalid && question.touched }" class="form-control" required>
+                <div class="validation" *ngIf="(question.invalid && question.touched) || (question.invalid && submitted)">
+                  <span>A question is required.</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <label for="questionType">Question Type</label>
+                <select type="text" id="questionType" name="questionType" ngModel #questionType="ngModel" [(ngModel)]="model.questionType" [ngClass]="{shake: questionType.invalid && questionType.touched }" required>
+                  <option value="select-one">Select One</option>
+                  <option value="select-one">Select (n)</option>
+                  <option value="select-one">Ranked</option>
+                </select>
+                <div class="validation" *ngIf="(questionType.invalid && questionType.touched) || (questionType.invalid && submitted) ">
+                  <span>An question type is required.</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="option1">Option 1</label>
+                <input type="text" id="option1" name="option1" ngModel #option1="ngModel" [(ngModel)]="model.option1" [ngClass]="{shake: option1.invalid && option1.touched }" required>
+                <div class="validation" *ngIf="(option1.invalid && option1.touched) || (option1.invalid && submitted) ">
+                  <span>An option is required.</span>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngFor="let opt of options; let i = index">
+              <div class="col-6">
+                <label for="option{{i+2}}">Option {{i+2}}</label>
+                <input type="text" id="option{{i+2}}" name="option{{i+2}}" ngModel #option{{i+2}}="ngModel" [(ngModel)]="model['option' + (i+2)]" required>
+              </div>
+              <div class="col-2">
+                <button (click)="removeOption(i)">Remove</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 add">
+                <button (click)="addOption()">Add Option</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <button type="submit" (click)="onSubmit()">Save</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <label for="questionType">Question Type</label>
-            <select type="text" id="questionType" name="questionType" ngModel #questionType="ngModel" [ngClass]="{shake: questionType.invalid && questionType.touched }" required>
-              <option value="select-one">Select One</option>
-              <option value="select-one">Select (n)</option>
-              <option value="select-one">Ranked</option>
-            </select>
-            <div class="validation" *ngIf="(questionType.invalid && questionType.touched) || (questionType.invalid && submitted) ">
-              <span>An question type is required.</span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <label for="option1">Option 1</label>
-            <input type="text" id="option1" name="option1" ngModel #option1="ngModel" [ngClass]="{shake: option1.invalid && option1.touched }" required>
-            <div class="validation" *ngIf="(option1.invalid && option1.touched) || (option1.invalid && submitted) ">
-              <span>An option is required.</span>
-            </div>
-          </div>
-        </div>
-        <div class="row" *ngFor="let opt of options; let i = index">
-          <div class="col-4">
-            <label for="option{{i+2}}">Option {{i+2}}</label>
-            <input type="text" id="option{{i+2}}" name="option{{i+2}}" ngModel #option{{i+2}}="ngModel" required>
-          </div>
-          <div class="col-2">
-            <button (click)="removeOption(i)">Remove</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <button (click)="addOption()">Add Option</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <button type="submit" (click)="onSubmit(f)">Save</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
+</section>
+<section>
+  {{model | json}}
 </section>
 <section>
   <div class="ballot-preview">
     <div class="section-head">
       <h2>Ballot Preview</h2>
     </div>
+    <app-ballot [election]="election"></app-ballot>
   </div>
 </section>

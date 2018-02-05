@@ -45,7 +45,7 @@
             "beginEpoc":1517288400,
             "endEpoc":1518584400
         },
-        "ballot": "",
+        "ballot": [ { "question": "Select a candidate for Governor", "questionType": "select-one", "option1": "Phillip J Fry", "option2": "The Gevernator", "option3": "John Malkovich" } ],
         "id":"florida-governor"
     },
     {  
