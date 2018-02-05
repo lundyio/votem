@@ -62,6 +62,26 @@ router.post('/save/election', function(req, res, status){
 
 });
 
+
+/**
+ * Save Ballot
+ */
+router.post('/save/ballot', function(req, res, status){
+
+    var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
+
+    for (i = 0; i < elections.length; i++) {
+        if( req.body.id && elections[i].id === req.body.id ){
+            elections[i].ballot = req.body.ballot;
+            fs.writeFile('./data/elections.json', JSON.stringify(elections), 'utf8', function(){
+                res.status(200).send('Successfully Added Ballot');
+            });
+            break;
+        }
+    }
+
+});
+
 /**
  * Get Elections
  */

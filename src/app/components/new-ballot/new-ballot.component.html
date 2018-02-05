@@ -10,6 +10,7 @@
           <li *ngFor="let q of election.ballot; let i = index">{{q.question}}
             <div class="controls">
               <button (click)="editQuestion(i)">Edit</button>
+              <button (click)="deleteQuestion(i)">Delete</button>
               <button (click)="moveUp(i)"><i class="fas fa-arrow-alt-up"></i></button>
               <button (click)="moveDown(i)"><i class="fas fa-arrow-alt-down"></i></button>
             </div>
@@ -68,14 +69,14 @@
                 <button (click)="addOption()" class="ghost">Add Option</button>
               </div>
             </div>
-            <div class="row">
-              <div class="col-8">
-                <button (click)="cancel()" class="ghost">Cancel</button>
-                <button (click)="onSubmit()">Save</button>
-              </div>
-            </div>
           </div>
         </form>
+      </div>
+    </div>
+    <div class="row save">
+      <div class="col-8">
+        <button (click)="cancel()" class="ghost" [disabled]="!(pendingChanges || f.touched)">Cancel</button>
+        <button (click)="onSubmit()" [disabled]="!(pendingChanges || f.touched)">Save</button>
       </div>
     </div>
   </div>

@@ -26,7 +26,10 @@ export class NewBallotComponent implements OnInit {
   model: any = {};
   edit: boolean = false;
   editIndex: number;
-  adding: boolean = false
+  adding: boolean = false;
+  error: boolean = false;
+  errorMessage: string;
+  pendingChanges: boolean = false;
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute) {
 
@@ -60,7 +63,11 @@ export class NewBallotComponent implements OnInit {
     this.election.ballot.push({
       type: type
     })
-    console.log(this.election.ballot);
+  }
+
+  deleteQuestion(i){
+    this.pendingChanges = true;
+    this.election.ballot.splice(i, 1);
   }
 
   editQuestion(i){
@@ -90,8 +97,10 @@ export class NewBallotComponent implements OnInit {
   move = function(array, index, delta) {
     var newIndex = index + delta;
     if (newIndex < 0  || newIndex == array.length) return; //Already at the top or bottom.
+    this.pendingChanges = true;
     var indexes = [index, newIndex].sort(); //Sort the indixes
     array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]); //Replace from lowest index, two elements, reverting the order
+    console.log(this.election.ballot);
   };
 
   moveUp(i){
@@ -114,18 +123,17 @@ export class NewBallotComponent implements OnInit {
   onSubmit(edit){
     this.submitted = true;
 
-    console.log(edit);
-
     if(this.f.valid){
-      console.log(this.model);
       if(!this.election.ballot){
         this.election.ballot = [];
       }
 
       if(this.edit){
         this.election.ballot[this.editIndex] = this.model;
-      } else {
+      } else if(Object.keys(this.model).length > 1) {
         this.election.ballot.push(this.model);
+      } else {
+        console.log('this was the issue');
       }
 
       this.model = {};
@@ -134,8 +142,34 @@ export class NewBallotComponent implements OnInit {
       this.edit = false;
       this.options = [];
       this.optionsCount = 0;
-      console.log(this.election.ballot);
+      this.save();
     }
+  }
+
+  save(){
+
+    console.log(this.election.ballot);
+
+    let payload = {
+      id: this.election.id,
+      ballot: this.election.ballot
+    }
+
+    var headers = new Headers();
+    this.http.post(this.urlBase + '/save/ballot',payload,{headers:headers})
+      .subscribe(
+        (res) => {
+          if(res.status == 200){
+            this.loadElection();
+          }
+        },
+        (err) => {
+          console.log(err._body);
+          this.error = true;
+          if(err){
+            this.errorMessage = 'There was an error saving this ballot please try again.'
+          }
+      });
   }
 
   ngOnInit() {
