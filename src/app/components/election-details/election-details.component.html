@@ -1,3 +1,36 @@
-<p>
-  election-detail works!
-</p>
+<section>
+  <div class="election-details">
+    <h2>{{election.name}}</h2>
+    <p>Created On: {{election.created | date}}</p>
+    <p>Running Dates: {{election.dateRange.beginJsDate | date}} - {{election.dateRange.endJsDate | date}}</p>
+    <p>Private: {{election.private ? 'Yes' : 'No'}}<br />Code: {{election.private ? election.code : 'N/A'}}</p>
+    <p>Status: {{status}}</p>
+  </div>
+</section>
+<section>
+  <div class="ballot-details">
+    <div class="section-head">
+      <h2>Election Results</h2>
+    </div>
+    <div *ngIf="!results" class="no-results">
+      <p>There aren't any results at this time, check back later.</p>
+    </div>
+    <div *ngIf="results">
+
+    </div>
+  </div>
+</section>
+<section>
+  <div class="ballot-details">
+    <div class="section-head">
+      <h2>Ballot Details</h2>
+    </div>
+    <div *ngIf="!election.ballot" class="no-ballot">
+      <p>There is no ballot for this election please add one.</p>
+      <button [routerLink]="'/admin/ballot/' + election.id">Add a Ballot</button>
+    </div>
+    <div *ngIf="election.ballot">
+
+    </div>
+  </div>
+</section>

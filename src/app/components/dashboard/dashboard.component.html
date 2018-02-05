@@ -11,6 +11,7 @@
           <th>Ballots Collected</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,9 @@
           <td></td>
           <td>{{election.startDate | date}}</td>
           <td>{{election.endDate | date}}</td>
+          <td>
+            <button *ngIf="!election.ballot" [routerLink]="'/admin/ballot/' + election.id">Add Ballot</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -32,6 +36,7 @@
   <div class="future-elections">
       <div class="section-head">
         <h2>Future Elections</h2>
+        <button [routerLink]="'/admin/election/new'">Create New</button>
       </div>
       <table>
         <thead>
@@ -40,6 +45,7 @@
             <th>Ballots Collected</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +60,9 @@
             <td></td>
             <td>{{election.startDate | date}}</td>
             <td>{{election.endDate | date}}</td>
+            <td>
+              <button *ngIf="!election.ballot" [routerLink]="'/admin/ballot/' + election.id">Add Ballot</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -69,6 +78,7 @@
           <th>Ballots Collected</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -77,6 +87,9 @@
           <td></td>
           <td>{{election.startDate | date}}</td>
           <td>{{election.endDate | date}}</td>
+          <td>
+            <button *ngIf="!election.ballot" [routerLink]="'/admin/ballot/' + election.id">Add Ballot</button>
+          </td>
         </tr>
       </tbody>
     </table>

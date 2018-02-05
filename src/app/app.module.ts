@@ -23,6 +23,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewElectionComponent } from './components/new-election/new-election.component';
 import { ElectionDetailsComponent } from './components/election-details/election-details.component';
 import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
+import { SelectOneComponent } from './components/select-one/select-one.component';
+import { SelectRankedComponent } from './components/select-ranked/select-ranked.component';
+import { SelectNComponent } from './components/select-n/select-n.component';
 
 const appRoutes: Routes = [
   { path: 'landing', component: LandingComponent },
@@ -33,7 +36,7 @@ const appRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'election/details/:id', component: ElectionDetailsComponent },
     { path: 'election/new', component: NewElectionComponent },
-    { path: 'ballot/new', component: NewBallotComponent }
+    { path: 'ballot/:id', component: NewBallotComponent }
   ]},
   { path: 'admin/login', component: LoginComponent },
   { path: '404', component: PageNotFoundComponent },
@@ -55,7 +58,10 @@ const appRoutes: Routes = [
     DashboardComponent,
     NewElectionComponent,
     ElectionDetailsComponent,
-    NewBallotComponent
+    NewBallotComponent,
+    SelectOneComponent,
+    SelectRankedComponent,
+    SelectNComponent
   ],
   imports: [
     BrowserModule,

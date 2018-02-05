@@ -2,19 +2,8 @@
 @import "../../../styles/section";
 
 :host{
-    form{
-        .row{
-            &:last-of-type{
-                text-align: right;
-            }
-        }
-        my-date-range-picker{
-            margin-bottom: 1rem;
-            display: block;          
-        }
-    }
-    .new-ballot{
-        max-width: 600px;
-        margin: 3rem auto;
+    .no-ballot{
+        padding: 2rem 0 3rem 0;
+        text-align: center;
     }
 }

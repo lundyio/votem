@@ -13,8 +13,19 @@
         th, td{
             text-align: left;
             padding: 0.5rem;
+            height: 50px;
+            &:last-of-type{
+                text-align: right;
+                width: auto;
+            }
         }
         tr{
+            td{
+                button{
+                    font-size: 0.75rem;
+                    padding: 0.5rem 0.75rem;
+                }
+            }
             &:nth-child(even){
                 background-color: lighten($purple, 57%);  
             }

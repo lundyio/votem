@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     let endDate = Date.parse(election.dateRange.endJsDate);
     let created = Date.parse(election.created);
     let now = Date.parse(this.now);
-    let newish = false
+    let newish = false;
 
     // Show that elections are new for 10 minutes
     if( Math.floor(((now - created)/1000)/60) < 10){
@@ -58,7 +58,8 @@ export class DashboardComponent implements OnInit {
         newish: newish,
         created: election.created,
         startDate:election.dateRange.beginJsDate,
-        endDate: election.dateRange.endJsDate
+        endDate: election.dateRange.endJsDate,
+        ballot: election.ballot
       });
 
       this.futureElections.sort(this.sortStartDec);
@@ -73,7 +74,8 @@ export class DashboardComponent implements OnInit {
         newish: newish,
         created: election.created,
         startDate:election.dateRange.beginJsDate,
-        endDate: election.dateRange.endJsDate
+        endDate: election.dateRange.endJsDate,
+        ballot: election.ballot
       });
 
       this.pastElections.sort(this.sortEndDec);
@@ -88,7 +90,8 @@ export class DashboardComponent implements OnInit {
         newish: newish,
         created: election.created,
         startDate:election.dateRange.beginJsDate,
-        endDate: election.dateRange.endJsDate
+        endDate: election.dateRange.endJsDate,
+        ballot: election.ballot
       });
 
       this.activeElections.sort(this.sortEndAsc);
@@ -147,6 +150,7 @@ export class Election {
     public newish: boolean,
     public created: Date,
     public startDate: Date,
-    public endDate: Date
+    public endDate: Date,
+    public ballot: boolean
   ) { }
 }

@@ -5,13 +5,6 @@ const fs = require('fs');
 var rimraf = require('rimraf');
 
 /**
- * Get Specific Content
- */
-router.get('/get', function(req, res){
-
-});
-
-/**
  * Search Active Elections
  */
 router.post('/lookup', function(req, res, status){
@@ -80,6 +73,26 @@ router.get('/get/elections', function(req, res, status){
         res.status(200).send(elections);
     } else {
         res.status(404).send('No Elections Found');
+    }
+
+});
+
+/**
+ * Get Elections
+ */
+router.get('/get/election/:id', function(req, res, status){
+
+    var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
+
+    if(elections.length > 0){
+        for (i = 0; i < elections.length; i++) {
+            if(elections[i].id === req.params.id){
+                res.status(200).send(elections[i]);
+                break;
+            }
+        }
+    } else {
+        res.status(404).send('Election Not Found');
     }
 
 });
