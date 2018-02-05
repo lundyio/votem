@@ -16,8 +16,12 @@ export class NewBallotComponent implements OnInit {
   election: any = {
     name: ''
   };
+  options: any[] = [];
+  optionsCount: number = 0;
 
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute) {
+
+  }
 
   loadElection(){
 
@@ -38,17 +42,29 @@ export class NewBallotComponent implements OnInit {
       });
   }
 
-  addQuestion(type){
+  saveQuestion(type){
 
     if(typeof(this.election.ballot) == 'string'){
       this.election.ballot = new Array;
     }
 
     this.election.ballot.push({
-      
       type: type
     })
     console.log(this.election.ballot);
+  }
+
+  removeOption(i){
+    this.options.splice(i, 1);
+  }
+
+  addOption(){
+    this.options.push(this.optionsCount + 1)
+    this.optionsCount++
+  }
+
+  onSubmit(f){
+    console.log(f);
   }
 
   ngOnInit() {
@@ -57,4 +73,11 @@ export class NewBallotComponent implements OnInit {
 
   }
 
+}
+
+export class Option {
+  constructor(
+    public id: string,
+    public name: string
+  ) { }
 }
