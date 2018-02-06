@@ -94,7 +94,7 @@ export class NewBallotComponent implements OnInit {
 
   removeOption(i){
     this.options.splice(i, 1);
-    delete this.model['option' + (i+2)];
+    delete this.model.options['option' + (i+2)];
   }
 
   addOption(){
@@ -129,6 +129,8 @@ export class NewBallotComponent implements OnInit {
 
   onSubmit(edit){
     this.submitted = true;
+
+    console.log(this.model);
 
     if(this.f.valid){
       if(!this.election.ballot){
