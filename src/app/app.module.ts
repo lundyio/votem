@@ -16,7 +16,6 @@ import { VoteComponent } from './components/vote/vote.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -52,7 +51,6 @@ const appRoutes: Routes = [
     LandingComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent,
     LoginComponent,
     DashboardComponent,
     NewElectionComponent,

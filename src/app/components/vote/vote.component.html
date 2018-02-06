@@ -1,3 +1,9 @@
-<p>
-  vote works!
-</p>
+<app-header></app-header>
+<section>
+  <h1>{{election.name}}</h1>
+</section>
+<section>
+  <div class="vote">
+      <app-ballot [election]="election"></app-ballot>
+  </div>
+</section>

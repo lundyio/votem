@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AdminComponent } from './admin.component';
 import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -12,7 +11,7 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent, HeaderComponent, FooterComponent ],
+      declarations: [ AdminComponent, HeaderComponent ],
       imports: [ RouterTestingModule ],
       providers: [ AuthService ]
     })

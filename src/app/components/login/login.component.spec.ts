@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
@@ -14,7 +13,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent, HeaderComponent, FooterComponent ],
+      declarations: [ LoginComponent, HeaderComponent ],
       imports: [ RouterTestingModule, FormsModule ],
       providers: [ AuthService ]
     })
