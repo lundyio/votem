@@ -1,0 +1,118 @@
+@import "../../../styles/variables";
+
+:host{
+    input[type="radio"]{
+        display: inline-block;
+        width: auto;
+        display: none;
+    }
+    label{
+        display: flex;
+        line-height: 1;
+        font-size: 1rem;
+        padding: 0.5rem 0 0.5rem 1rem;
+        &:hover{
+            cursor: pointer;
+            background-color: lighten($seafoam, 40%);
+        }
+    }
+    .radio-group{
+        label{
+            .fake-radio{
+                position: relative;
+                display: inline-flex;
+                align-self: center;
+                margin-right: 0.5rem;
+                &:before{
+                    content: '';
+                    display: inline-block;
+                    height: 20px;
+                    width: 20px;
+                    border: 1px solid $purple;
+                    border-radius: 50%;
+                }
+                &.checked{
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        left: 3px;
+                        top: 3px;
+                        display: inline-block;
+                        height: 16px;
+                        width: 16px;
+                        background-color: $purple;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            span{
+                display: inline-flex;
+                align-self: center;
+            }
+        }
+    }
+    .ranked-group{
+        ol{
+            margin: 0 0 0 2.375rem;
+            padding: 0;
+            li{
+                font-weight: 300;
+                margin-bottom: 0.25rem;
+                line-height: 1;
+                font-size: 1rem;
+                padding: 0.5rem 0 0.5rem 0.5rem;
+                .controls{
+                    display: inline-flex;
+                    margin-right: 0.5rem;
+                    button{
+                        font-size: 0.75rem;
+                        padding: 0.25rem 0.75rem;
+                        background-color: $white;
+                        color: $purple;
+                        border: 1px solid;
+                        align-self: center;
+                        line-height: 1;
+                        &:first-of-type{
+                            border-right: 0;
+                            border-radius: 3px 0 0 3px;
+                            line-height: 1;
+                        }
+                        &:last-of-type{
+                            border-left: 0;
+                            border-radius: 0 3px 3px 0;
+                        }
+                        &:hover{
+                            background-color: $purple;
+                            color: $white;
+                            border-color: $purple;
+                        }
+                    }
+                }
+                &:first-of-type{
+                    .controls{
+                        button{
+                            &:first-of-type{
+                                opacity: 0.5;
+                                &:hover{
+                                    cursor: not-allowed;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-of-type{
+                    .controls{
+                        button{
+                            &:last-of-type{
+                                opacity: 0.5;
+                                &:hover{
+                                    cursor: not-allowed;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

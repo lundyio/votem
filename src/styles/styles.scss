@@ -130,6 +130,10 @@ label{
     color: $danger;
 }
 
+.hidden{
+    display: none !important;
+}
+
 app-admin{
     input, select{
         border: 1px solid $purple;
