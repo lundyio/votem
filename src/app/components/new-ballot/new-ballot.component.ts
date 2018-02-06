@@ -23,7 +23,9 @@ export class NewBallotComponent implements OnInit {
   options: any[] = [];
   optionsCount: number = 0;
   submitted: boolean = false;
-  model: any = {};
+  model: any = {
+    options: {}
+  };
   edit: boolean = false;
   editIndex: number;
   adding: boolean = false;
@@ -76,12 +78,19 @@ export class NewBallotComponent implements OnInit {
     this.editIndex = i;
 
     if(this.optionsCount === 0){
-      this.optionsCount = Object.keys(this.election.ballot[i]).length -3;
-      for (var x = 0; x < this.optionsCount; x++){
-        this.options.push(this.optionsCount)
+      this.optionsCount = Object.keys(this.election.ballot[i].options).length -1;
+      console.log(this.optionsCount)
+      for (var x = 0; x <= this.optionsCount; x++){
+        if(x != this.optionsCount){
+          this.options.push(this.optionsCount)
+        }
+        this.model.options = this.election.ballot[i].options;
       }
     }
-    this.model = this.election.ballot[i];
+
+    this.model.question = this.election.ballot[i].question;
+    this.model.questionType = this.election.ballot[i].questionType;
+
   }
 
   removeOption(i){
@@ -136,7 +145,9 @@ export class NewBallotComponent implements OnInit {
         console.log('this was the issue');
       }
 
-      this.model = {};
+      this.model = {
+        options: {}
+      };
       this.f.reset();
       this.submitted = false;
       this.edit = false;
@@ -149,8 +160,6 @@ export class NewBallotComponent implements OnInit {
   }
 
   save(){
-
-    console.log(this.election.ballot);
 
     let payload = {
       id: this.election.id,

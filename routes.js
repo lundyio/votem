@@ -89,7 +89,7 @@ router.get('/get/elections', function(req, res, status){
 
     var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
 
-    if(elections.length > 0){
+    if(elections){
         res.status(200).send(elections);
     } else {
         res.status(404).send('No Elections Found');

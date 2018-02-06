@@ -9,6 +9,8 @@ export class BallotComponent implements OnInit {
 
   @Input() election: {id: string};
 
+  model: any = {};
+
   constructor() { }
 
   ngOnInit() {

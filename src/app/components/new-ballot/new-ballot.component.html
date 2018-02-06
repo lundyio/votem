@@ -21,7 +21,6 @@
         <div class="no-ballot" *ngIf="!adding">
           <button (click)="adding = true">Add a Question</button>
         </div>
-        
         <form #f="ngForm" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid || error}">
           <div class="new-questions" *ngIf="adding">
             <div class="row">
@@ -38,8 +37,8 @@
                 <label for="questionType">Question Type</label>
                 <select type="text" id="questionType" name="questionType" ngModel #questionType="ngModel" [(ngModel)]="model.questionType" [ngClass]="{shake: questionType.invalid && questionType.touched }" required>
                   <option value="select-one">Select One</option>
-                  <option value="select-one">Select (n)</option>
-                  <option value="select-one">Ranked</option>
+                  <option value="select-n">Select (n)</option>
+                  <option value="select-ranked">Ranked</option>
                 </select>
                 <div class="validation" *ngIf="(questionType.invalid && questionType.touched) || (questionType.invalid && submitted) ">
                   <span>An question type is required.</span>
@@ -49,7 +48,7 @@
             <div class="row">
               <div class="col-6">
                 <label for="option1">Option 1</label>
-                <input type="text" id="option1" name="option1" ngModel #option1="ngModel" [(ngModel)]="model.option1" [ngClass]="{shake: option1.invalid && option1.touched }" required>
+                <input type="text" id="option1" name="option1" ngModel #option1="ngModel" [(ngModel)]="model.options.option1" [ngClass]="{shake: option1.invalid && option1.touched }" required>
                 <div class="validation" *ngIf="(option1.invalid && option1.touched) || (option1.invalid && submitted) ">
                   <span>An option is required.</span>
                 </div>
@@ -58,7 +57,7 @@
             <div class="row" *ngFor="let opt of options; let i = index">
               <div class="col-6">
                 <label for="option{{i+2}}">Option {{i+2}}</label>
-                <input type="text" id="option{{i+2}}" name="option{{i+2}}" ngModel #option{{i+2}}="ngModel" [(ngModel)]="model['option' + (i+2)]" required>
+                <input type="text" id="option{{i+2}}" name="option{{i+2}}" ngModel #option{{i+2}}="ngModel" [(ngModel)]="model.options['option' + (i+2)]" required>
               </div>
               <div class="col-2 remove">
                 <button (click)="removeOption(i)" class="ghost">Remove</button>
@@ -80,6 +79,9 @@
       </div>
     </div>
   </div>
+</section>
+<section>
+  <p>{{model.questionType}}</p>
 </section>
 <section>
   <div class="ballot-preview">

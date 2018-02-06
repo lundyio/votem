@@ -1,3 +1,21 @@
 <p>
   {{election.ballot | json}}
 </p>
+
+<div class="question-group" *ngFor="let q of election.ballot; let i = index">
+  
+  <label for="question{{i}}">{{q.question}}</label>
+  
+  <div class="question" *ngIf="q.questionType === 'select-one'">
+      <input id=question{{1}} name="options{{i}}" type="radio" [value]="1"  [(ngModel)]="model.options">
+  </div>
+
+  <div class="question" *ngIf="q.questionType === 'select-n'">
+    select n
+  </div>
+
+  <div class="question" *ngIf="q.questionType === 'select-ranked'">
+    select ranked
+  </div>
+
+</div>

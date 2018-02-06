@@ -4,7 +4,10 @@
       <h2>Active Elections</h2>
       <button [routerLink]="'/admin/election/new'">Create New</button>
     </div>
-    <table>
+    <div class="no-data" *ngIf="futureElections.length <= 0">
+      <p>There arent any upcoming elections, maybe create one?</p>
+    </div>
+    <table *ngIf="activeElections.length > 0">
       <thead>
         <tr>
           <th>Election Name</th>
@@ -38,7 +41,10 @@
         <h2>Future Elections</h2>
         <button [routerLink]="'/admin/election/new'">Create New</button>
       </div>
-      <table>
+      <div class="no-data" *ngIf="futureElections.length <= 0">
+        <p>There arent any upcoming elections, maybe create one?</p>
+      </div>
+      <table *ngIf="futureElections.length > 0">
         <thead>
           <tr>
             <th>Election Name</th>
@@ -71,7 +77,10 @@
     <div class="section-head">
       <h2>Finished Elections</h2>
     </div>
-    <table>
+    <div class="no-data" *ngIf="pastElections.length <= 0">
+        <p>You havent completed an election yet, let's create one?</p>
+      </div>
+    <table *ngIf="pastElections.length > 0">
       <thead>
         <tr>
           <th>Election Name</th>
