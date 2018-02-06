@@ -7,7 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BallotComponent implements OnInit {
 
-  @Input() election: {id: string};
+  @Input('election') election: any = {
+    ballot: []
+  };
 
   model: any = {};
 

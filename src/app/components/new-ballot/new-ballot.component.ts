@@ -79,7 +79,6 @@ export class NewBallotComponent implements OnInit {
 
     if(this.optionsCount === 0){
       this.optionsCount = Object.keys(this.election.ballot[i].options).length -1;
-      console.log(this.optionsCount)
       for (var x = 0; x <= this.optionsCount; x++){
         if(x != this.optionsCount){
           this.options.push(this.optionsCount)
@@ -109,7 +108,6 @@ export class NewBallotComponent implements OnInit {
     this.pendingChanges = true;
     var indexes = [index, newIndex].sort(); //Sort the indixes
     array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]); //Replace from lowest index, two elements, reverting the order
-    console.log(this.election.ballot);
   };
 
   moveUp(i){
@@ -141,8 +139,6 @@ export class NewBallotComponent implements OnInit {
         this.election.ballot[this.editIndex] = this.model;
       } else if(Object.keys(this.model).length > 1) {
         this.election.ballot.push(this.model);
-      } else {
-        console.log('this was the issue');
       }
 
       this.model = {
@@ -175,7 +171,6 @@ export class NewBallotComponent implements OnInit {
           }
         },
         (err) => {
-          console.log(err._body);
           this.error = true;
           if(err){
             this.errorMessage = 'There was an error saving this ballot please try again.'

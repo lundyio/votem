@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { LandingComponent } from './landing.component';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LandingComponent', () => {
   let component: LandingComponent;
@@ -11,7 +12,7 @@ describe('LandingComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LandingComponent, MockHeaderComponent, MockFooterComponent ],
-      imports: [ FormsModule, HttpModule ]
+      imports: [ FormsModule, HttpModule, RouterTestingModule ]
     })
     .compileComponents();
   }));

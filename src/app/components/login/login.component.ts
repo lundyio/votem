@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { AuthService } from '../../services/auth/auth.service';
-import { CanActivate, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',

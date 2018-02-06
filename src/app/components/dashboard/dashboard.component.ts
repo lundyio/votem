@@ -20,12 +20,12 @@ export class DashboardComponent implements OnInit {
   constructor(private http: Http) { }
 
   getElections(){
+
     var headers = new Headers();
     this.http.get(this.urlBase + '/get/elections', {headers:headers}).subscribe(
       (res) => {
         if(res.status == 200){
           this.elections = JSON.parse(res['_body']);
-
           for (var i = 0; i < this.elections.length; i++) {
             this.sortElection(this.elections[i]);
           }
