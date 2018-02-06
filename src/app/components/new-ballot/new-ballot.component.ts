@@ -92,9 +92,22 @@ export class NewBallotComponent implements OnInit {
 
   }
 
+  scrubOptions(){
+    console.log(this.model.options)
+    let newModel = {
+      options: {}
+    };
+    for ( var n = 0; n < Object.keys(this.model.options).length; n++ ){
+      newModel.options['option' + (n+1)] = Object.values(this.model.options)[n]
+    }
+    this.model.options = newModel.options;
+    console.log(this.model.options);
+  }
+
   removeOption(i){
     this.options.splice(i, 1);
     delete this.model.options['option' + (i+2)];
+    this.scrubOptions();
   }
 
   addOption(){
@@ -125,6 +138,7 @@ export class NewBallotComponent implements OnInit {
     this.submitted = false;
     this.options = [];
     this.optionsCount = 0;
+    this.loadElection();
   }
 
   onSubmit(edit){
