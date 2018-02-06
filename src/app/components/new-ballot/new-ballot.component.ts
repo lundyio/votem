@@ -86,7 +86,7 @@ export class NewBallotComponent implements OnInit {
 
   removeOption(i){
     this.options.splice(i, 1);
-    this.model['option' + (i+2)] = null;
+    delete this.model['option' + (i+2)];
   }
 
   addOption(){
@@ -112,9 +112,9 @@ export class NewBallotComponent implements OnInit {
   }
 
   cancel(){
-    this.f.reset();
     this.edit = false;
     this.adding = false;
+    this.pendingChanges = false;
     this.submitted = false;
     this.options = [];
     this.optionsCount = 0;
@@ -140,6 +140,8 @@ export class NewBallotComponent implements OnInit {
       this.f.reset();
       this.submitted = false;
       this.edit = false;
+      this.adding = false;
+      this.pendingChanges = false;
       this.options = [];
       this.optionsCount = 0;
       this.save();

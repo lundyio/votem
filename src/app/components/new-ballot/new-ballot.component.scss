@@ -59,11 +59,21 @@
     }
     .save{
         text-align: right;
-        button[disabled]{
-            opacity: 0.5;
-            &:hover{
-                cursor: not-allowed;
-            }
+    }
+    .add{
+        text-align: left;
+        button{
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid $purple;
+        }
+    }
+    .remove{
+        button{
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid $purple;
+            margin-top: 4px;
         }
     }
 }
