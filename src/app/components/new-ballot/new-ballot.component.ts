@@ -93,7 +93,6 @@ export class NewBallotComponent implements OnInit {
   }
 
   scrubOptions(){
-    console.log(this.model.options)
     let newModel = {
       options: {}
     };
@@ -101,7 +100,6 @@ export class NewBallotComponent implements OnInit {
       newModel.options['option' + (n+1)] = Object.values(this.model.options)[n]
     }
     this.model.options = newModel.options;
-    console.log(this.model.options);
   }
 
   removeOption(i){
@@ -143,8 +141,6 @@ export class NewBallotComponent implements OnInit {
 
   onSubmit(edit){
     this.submitted = true;
-
-    console.log(this.model);
 
     if(this.f.valid){
       if(!this.election.ballot){
