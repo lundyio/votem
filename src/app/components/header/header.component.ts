@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    if(this.parent === 'login' || this.parent === 'admin'){
-      this.showLoginButton = false;
-    } else {
+    if(this.parent === 'landing'){
       this.showLoginButton = true;
+    } else {
+      this.showLoginButton = false;
     }
 
   }
