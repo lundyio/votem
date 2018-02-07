@@ -26,17 +26,16 @@ export class BallotComponent implements OnInit {
   }
 
   handleChange(value, index){
-    if(this.model[index]){
-      
-      if(this.model[index][value]){
-        this.model[index][value] = false;
-      } else {
-        this.model[index][value] = true;
-      }
 
+    if(this.model[index]){
+      if(this.model[index].indexOf(value) < 0){
+        this.model[index].push(value);
+      } else {
+        this.model[index].splice(this.model[index].indexOf(value), 1);
+      }
     } else {
-      this.model[index] = {};
-      this.model[index][value] = true;
+      this.model[index] = [];
+      this.model[index].push(value);
     }
   }
 
@@ -50,7 +49,7 @@ export class BallotComponent implements OnInit {
 
   isChecked(val, index){
     if(this.model[index]){
-      if(this.model[index][val] === true){
+      if(this.model[index].indexOf(val) > -1){
         return true;
       } else {
         return false;
