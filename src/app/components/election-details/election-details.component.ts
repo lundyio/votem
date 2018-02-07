@@ -34,28 +34,6 @@ export class ElectionDetailsComponent implements OnInit {
     });
   }
 
-  // determin is the election is currently running
-  isActive(){
-    let beginDate = Date.parse(this.election.dateRange.beginJsDate);
-    let now: any = new Date();
-
-    if((beginDate - Date.parse(now)) < 0){
-      this.active = true;
-    } else {
-      this.active = false;
-    }
-  }
-
-  // kind of a mock status, mostly for the ui
-  setStatus(){
-    this.isActive();
-    if(!this.election.ballot){
-      this.status = 'Needs a Ballot'
-    } else if(this.active) {
-      this.status = 'Active'
-    }
-  }
-
   getResults(){
 
     var headers = new Headers();
@@ -75,7 +53,6 @@ export class ElectionDetailsComponent implements OnInit {
     this.loaderService.getElection(this.electionId)
       .then(() => {
         this.election = this.loaderService.election;
-        this.setStatus();
         this.getResults();
       });     
 
