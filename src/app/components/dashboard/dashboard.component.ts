@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private http: Http) { }
 
+  // gets election data from server
   getElections(){
-
     var headers = new Headers();
     this.http.get(this.urlBase + '/get/elections', {headers:headers}).subscribe(
       (res) => {
@@ -33,10 +33,11 @@ export class DashboardComponent implements OnInit {
         }
       },
       (err) => {
-        
+        // add better error handling
     });
   }
 
+  // sorts elections into active, future, and past
   sortElection(election){
 
     let beginDate = Date.parse(election.dateRange.beginJsDate);
@@ -61,9 +62,7 @@ export class DashboardComponent implements OnInit {
         endDate: election.dateRange.endJsDate,
         ballot: election.ballot
       });
-
       this.futureElections.sort(this.sortStartDec);
-
     }
 
     // Sort Past Elections
@@ -77,9 +76,7 @@ export class DashboardComponent implements OnInit {
         endDate: election.dateRange.endJsDate,
         ballot: election.ballot
       });
-
       this.pastElections.sort(this.sortEndDec);
-
     }
 
     // Sort Active Elections
@@ -93,46 +90,37 @@ export class DashboardComponent implements OnInit {
         endDate: election.dateRange.endJsDate,
         ballot: election.ballot
       });
-
       this.activeElections.sort(this.sortEndAsc);
-
     }
     
   }
 
+  // sort by start date decending
   sortStartDec(item1, item2) {
-
     item1 = Date.parse(item1.startDate);
     item2 = Date.parse(item2.startDate);
-
     if (item1 > item2) return 1;
     if (item1 < item2) return -1;
-
     return 0;
   };
 
+  // sort by end date decending
   sortEndDec(item1, item2) {
-
     item1 = Date.parse(item1.endDate);
     item2 = Date.parse(item2.endDate);
-
     if (item1 < item2) return 1;
     if (item1 > item2) return -1;
-
     return 0;
   };
 
+  // sort by end date ascending
   sortEndAsc(item1, item2) {
-
     item1 = Date.parse(item1.endDate);
     item2 = Date.parse(item2.endDate);
-
     if (item1 > item2) return 1;
     if (item1 < item2) return -1;
-
     return 0;
   };
-  
   
 
   ngOnInit() {
@@ -143,6 +131,7 @@ export class DashboardComponent implements OnInit {
 
 }
 
+// model for election rows
 export class Election {
   constructor(
     public id: string,

@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  // submit function for login, on sucess go to admin page
   onSubmit(f){
     if(f.invalid){
       this.invalid = true;
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+    //redirects user to admin if already logged in
     if(this.authService.isLoggedIn()){
       this.router.navigate(['/admin']);
     }

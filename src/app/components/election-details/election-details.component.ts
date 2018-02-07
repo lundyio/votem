@@ -27,12 +27,15 @@ export class ElectionDetailsComponent implements OnInit {
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute) { }
 
+  // get election info from server
   loadElection(){
 
+    // get id from route
     this.route.params.subscribe(params => {
       this.electionId = params['id'];
     });
 
+    // get election info from server
     var headers = new Headers();
     this.http.get(this.urlBase + '/get/election/' + this.electionId, {headers:headers})
       .subscribe(
@@ -47,6 +50,7 @@ export class ElectionDetailsComponent implements OnInit {
       });
   }
 
+  // determin is the election is currently running
   isActive(){
     let beginDate = Date.parse(this.election.dateRange.beginJsDate);
     let now: any = new Date();
@@ -58,6 +62,7 @@ export class ElectionDetailsComponent implements OnInit {
     }
   }
 
+  // kind of a mock status, mostly for the ui
   setStatus(){
     this.isActive();
     if(!this.election.ballot){

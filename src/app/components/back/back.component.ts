@@ -10,6 +10,7 @@ export class BackComponent implements OnInit {
 
   constructor(private location: Location) { }
 
+  // go back to previous route
   back(){
     this.location.back();
   }

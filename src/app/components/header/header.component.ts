@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+    // only show login button on landing page
     if(this.parent === 'landing'){
       this.showLoginButton = true;
     } else {

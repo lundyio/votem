@@ -17,8 +17,8 @@ export class LandingComponent implements OnInit {
 
   constructor(private http: Http, private router: Router) { }
 
+  // submit form for invitation code, if valid lookup code, route to voting page
   onSubmit(f){
-    console.log(f);
     if(f.invalid){
       this.invalid = true;
     } else {

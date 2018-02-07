@@ -18,6 +18,7 @@ export class NewElectionComponent implements OnInit {
   error: boolean = false;
   errorMessage: string;
 
+  // options for date component
   dateRangeOptions: IMyDrpOptions = {
     inline: true,
     dateFormat: 'mm.dd.yyyy',
@@ -25,9 +26,10 @@ export class NewElectionComponent implements OnInit {
 
   constructor(private http: Http, private router: Router) { }
 
+  // submit new election data to the server, if successful redirect to dashboard, can error in a few ways
   onSubmit(f){
     this.submitted = false;
-    window.setTimeout(()=>{this.submitted = true;});
+    window.setTimeout(()=>{this.submitted = true;}); // fix this later, but it works
     console.log(f);
 
     if(f.valid){

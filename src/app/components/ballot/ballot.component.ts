@@ -25,8 +25,13 @@ export class BallotComponent implements OnInit {
     
   }
 
+  // Sort data from select-n questions
   handleChange(value, index){
 
+    /* 
+      if the model doesnt exist yet create it and add value
+      if it does push in value, if already exists, remove it
+    */
     if(this.model[index]){
       if(this.model[index].indexOf(value) < 0){
         this.model[index].push(value);
@@ -39,6 +44,7 @@ export class BallotComponent implements OnInit {
     }
   }
 
+  // Accessibility helper for fake radio buttons
   handleKeypress(event, value, index){
     if(event.keyCode === 32){
       this.handleChange(value, index);
@@ -46,6 +52,7 @@ export class BallotComponent implements OnInit {
       return
     }
   }
+
 
   isChecked(val, index){
     if(this.model[index]){
@@ -59,6 +66,7 @@ export class BallotComponent implements OnInit {
     }
   }
 
+  // Does the actual moving
   move = function(array, index, delta) {
     var newIndex = index + delta;
     if (newIndex < 0  || newIndex == array.length) return; //Already at the top or bottom.
@@ -67,17 +75,16 @@ export class BallotComponent implements OnInit {
     array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]]); //Replace from lowest index, two elements, reverting the order
   };
 
+  // moves the ranked options up
   moveUp(question, option){
     this.move(this.model[question], option, -1);
   }
 
+  // moves the ranked options down
   moveDown(question, option){
     this.move(this.model[question], option, 1);
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes)
-  // }
 
   ngOnInit() {
 

@@ -12,8 +12,8 @@
             <div class="controls">
               <button (click)="editQuestion(i)" [disabled]="edit || adding">Edit</button>
               <button (click)="deleteQuestion(i)" [disabled]="edit || adding">Delete</button>
-              <button (click)="moveUp(i)" [disabled]="edit || adding || (i <= 1)"><i class="fas fa-arrow-alt-up"></i></button>
-              <button (click)="moveDown(i)" [disabled]="edit || adding || (i <= 1)"><i class="fas fa-arrow-alt-down"></i></button>
+              <button (click)="moveUp(i)" [disabled]="edit || adding"><i class="fas fa-arrow-alt-up"></i></button>
+              <button (click)="moveDown(i)" [disabled]="edit || adding"><i class="fas fa-arrow-alt-down"></i></button>
             </div>
           </li>
         </ol>

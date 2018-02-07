@@ -23,6 +23,7 @@ export class VoteComponent implements OnInit {
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute) { }
 
+  // load election data
   loadElection(){
 
     this.route.params.subscribe(params => {
@@ -45,6 +46,7 @@ export class VoteComponent implements OnInit {
       });
   }
 
+  // send vote to server, jumps to the top if there is a validation error because the form gets long
   onSubmit(f){
     this.submitted = true;
     if(f.invalid){
