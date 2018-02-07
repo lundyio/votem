@@ -42,7 +42,7 @@ export class GraphLineComponent implements OnInit {
     if(this.masterObj){
       for (var i=0; i < Object.keys(this.masterObj[Object.keys(this.masterObj)[0]]).length; i++){
         this.chartData.push({
-          label: 'Choice ' + (i+1)
+          label: 'Ranked: ' + (i+1) + ' (xTimes)'
         })
       }
       for (var i=0; i < Object.keys(this.masterObj).length; i++){

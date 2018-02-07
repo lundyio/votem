@@ -40,7 +40,7 @@
                     "option3":"Sprite",
                     "option4":"Water"
                 },
-                "question":"If Pepsi wasn't available, rank the follow from most likely to drink to least likely.",
+                "question":"If Pepsi wasn't available, rank the following from most likely to drink to least likely.",
                 "questionType":"select-ranked"
             },
             {  
@@ -50,7 +50,7 @@
                     "option3":"Mt. Dew",
                     "option4":"Water"
                 },
-                "question":"If Coke wasn't available, rank the follow from most likely to drink to least likely.",
+                "question":"If Coke wasn't available, rank the following from most likely to drink to least likely.",
                 "questionType":"select-ranked"
             },
             {  

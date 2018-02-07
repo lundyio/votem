@@ -3,7 +3,7 @@
   <div class="election-details">
     <div class="section-head">
       <h2>{{election.name}}</h2>
-      <button [routerLink]="'/vote/' + election.id">View Election</button>
+      <button [routerLink]="'/vote/' + election.id" *ngIf="isEditable()">View Election</button>
     </div>
     <p>Created On: {{election.created | date}}</p>
     <p>Running Dates: {{election.dateRange.beginJsDate | date}} - {{election.dateRange.endJsDate | date}}</p>
@@ -20,6 +20,7 @@
     </div>
     <div *ngIf="results.length > 0">
       <div class="graph-wrapper" *ngFor="let q of election.ballot; let i = index;">
+        <h3>{{q.question}}</h3>
         <app-graph-bar [index]="i" [ballot]="q" [results]="results" *ngIf="q.questionType === 'select-one' || q.questionType === 'select-n'"></app-graph-bar>
         <app-graph-line [index]="i" [ballot]="q" [results]="results" *ngIf="q.questionType === 'select-ranked'"></app-graph-line>
       </div>
