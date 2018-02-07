@@ -27,7 +27,6 @@ export class BallotComponent implements OnInit {
 
   // Sort data from select-n questions
   handleChange(value, index){
-
     /* 
       if the model doesnt exist yet create it and add value
       if it does push in value, if already exists, remove it
@@ -41,13 +40,17 @@ export class BallotComponent implements OnInit {
     } else {
       this.model[index] = [];
       this.model[index].push(value);
-    }
+    }  
   }
 
   // Accessibility helper for fake radio buttons
-  handleKeypress(event, value, index){
+  handleKeypress(event, value, index, type){
     if(event.keyCode === 32){
-      this.handleChange(value, index);
+      if(type === 'select-one'){
+        this.model[index] = value;
+      } else {
+        this.handleChange(value, index);
+      }
     } else {
       return
     }

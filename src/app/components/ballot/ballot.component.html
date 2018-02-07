@@ -2,7 +2,7 @@
   <h3>{{q.question}}</h3>    
   <div class="question" *ngIf="q.questionType === 'select-one'">
     <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
-        <label tabindex="0" for="option-{{i}}-{{n}}">
+        <label tabindex="0" for="option-{{i}}-{{n}}" (keydown)="handleKeypress($event, val, i, q.questionType)">
           <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" [(ngModel)]="model[i]">
           <div class="fake-radio" [ngClass]="{checked: model[i] === val}"></div>
           <span>{{val}}</span>
@@ -11,7 +11,7 @@
   </div>
   <div class="question" *ngIf="q.questionType === 'select-n'">
     <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
-        <label tabindex="0" for="option-{{i}}-{{n}}" (keypress)="handleKeypress($event, val, i)">
+        <label tabindex="0" for="option-{{i}}-{{n}}" (keydown)="handleKeypress($event, val, i, q.questionType)">
           <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" (click)="handleChange(val, i)">
           <div class="fake-radio" [ngClass]="{checked: isChecked(val, i)}"></div>
           <span>{{val}}</span>
