@@ -70,7 +70,8 @@
     },
     {  
         "name":"King of Beers",
-        "private":"",
+        "private":"true",
+        "code": "king",
         "dateRange":{  
             "beginDate":{  
                 "year":2018,
