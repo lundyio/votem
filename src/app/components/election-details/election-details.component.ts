@@ -17,6 +17,7 @@ export class ElectionDetailsComponent implements OnInit {
   electionId: string;
   status: string = 'Checking...'
   active: boolean = false;
+  results: any = [];
   election: any = {
     name: '',
     ballot: '',
@@ -55,6 +56,19 @@ export class ElectionDetailsComponent implements OnInit {
     }
   }
 
+  getResults(){
+
+    var headers = new Headers();
+    this.http.get(this.urlBase + '/get/votes/' + this.election.id, {headers:headers}).subscribe(
+      (res) => {
+        if(res.status == 200){
+          this.results = JSON.parse(res['_body']);
+          console.log(this.results);
+        }
+      });
+
+  }
+
   ngOnInit() {
 
     // ask for election data then asign it if all goes well, then set status
@@ -62,12 +76,8 @@ export class ElectionDetailsComponent implements OnInit {
       .then(() => {
         this.election = this.loaderService.election;
         this.setStatus();
-      })
-      .catch(
-        () => {
-          console.log('Failed to retrieve content.')
-        }
-      );      
+        this.getResults();
+      });     
 
   }
 

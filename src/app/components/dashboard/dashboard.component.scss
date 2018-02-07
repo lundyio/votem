@@ -8,6 +8,10 @@
         thead{
             tr{
                 border-bottom: 1px solid $purple;
+                &:hover{
+                    background-color: $white;
+                    cursor: default;
+                }
             }
         }
         th, td{

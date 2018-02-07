@@ -25,6 +25,9 @@ import { NewBallotComponent } from './components/new-ballot/new-ballot.component
 import { BallotComponent } from './components/ballot/ballot.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { BackComponent } from './components/back/back.component';
+import { ChartsModule } from 'ng2-charts';
+import { GraphBarComponent } from './components/graph-bar/graph-bar.component';
+import { GraphLineComponent } from './components/graph-line/graph-line.component';
 
 
 const appRoutes: Routes = [
@@ -61,7 +64,9 @@ const appRoutes: Routes = [
     NewBallotComponent,
     BallotComponent,
     ThankYouComponent,
-    BackComponent
+    BackComponent,
+    GraphBarComponent,
+    GraphLineComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ const appRoutes: Routes = [
     HttpModule,
     HttpClientModule,
     MyDateRangePickerModule,
+    ChartsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only

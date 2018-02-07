@@ -135,21 +135,21 @@ router.get('/get/election/:id', function(req, res, status){
 /**
  * Get Elections Results By ID
  */
-router.get('/get/results/:id', function(req, res, status){
+router.get('/get/votes/:id', function(req, res, status){
 
-    var results = JSON.parse(fs.readFileSync('./data/results.json', 'utf8'));
+    var votes = JSON.parse(fs.readFileSync('./data/votes.json', 'utf8'));
 
     var filtered = [];
 
-    if(results.length > 0){
-        for (i = 0; i < results.length; i++) {
-            if(results[i].id === req.params.id){
-                results.push(elections[i])
+    if(votes.length > 0){
+        for (i = 0; i < votes.length; i++) {
+            if(votes[i].electionId === req.params.id){
+                filtered.push(votes[i].votes);
             }
         }
-        res.status(200).send();
+        res.status(200).send(filtered);
     } else {
-        res.status(404).send('Election Results Found');
+        res.status(404).send('Election votes Found');
     }
 
 });

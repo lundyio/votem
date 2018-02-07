@@ -14,8 +14,6 @@ export class ElectionDataService {
 
   getElection(id) {
 
-    console.log(id);
-
     let promise = new Promise((resolve, reject) => {
 
       this.http.get(this.urlBase + '/get/election/' + id)
