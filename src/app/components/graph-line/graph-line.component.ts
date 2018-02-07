@@ -20,41 +20,45 @@ export class GraphLineComponent implements OnInit {
   constructor() { }
 
   setupObj(){
-    for (var i=0; i < Object.keys(this.ballot.options).length; i++){
-      this.masterObj[Object.values(this.ballot.options)[i]] = {};
-
-      for (var n=0; n < Object.keys(this.ballot.options).length; n++){
-        let key = Object.keys(this.ballot.options)[n];
-        Object.values(this.masterObj)[i][Object.keys(this.ballot.options)[n]] = 0;
+    if(this.ballot){
+      for (var i=0; i < Object.keys(this.ballot.options).length; i++){
+        this.masterObj[Object.values(this.ballot.options)[i]] = {};
+        for (var n=0; n < Object.keys(this.ballot.options).length; n++){
+          let key = Object.keys(this.ballot.options)[n];
+          Object.values(this.masterObj)[i][Object.keys(this.ballot.options)[n]] = 0;
+        }
+  
       }
-
     }
   }
 
   setLables(){
-    this.chartLabels = Object.keys(this.masterObj);
+    if(this.masterObj){
+      this.chartLabels = Object.keys(this.masterObj);
+    }
   }
 
   setData(){
-
     console.log(this.masterObj);
-
-    for (var i=0; i < Object.keys(this.masterObj[Object.keys(this.masterObj)[0]]).length; i++){
-      this.chartData.push({
-        label: 'Choice ' + (i+1)
-      })
-    }
-
-    for (var i=0; i < Object.keys(this.masterObj).length; i++){
-      this.chartData[i].data = Object.values(this.masterObj[Object.keys(this.masterObj)[i]])
+    if(this.masterObj){
+      for (var i=0; i < Object.keys(this.masterObj[Object.keys(this.masterObj)[0]]).length; i++){
+        this.chartData.push({
+          label: 'Choice ' + (i+1)
+        })
+      }
+      for (var i=0; i < Object.keys(this.masterObj).length; i++){
+        this.chartData[i].data = Object.values(this.masterObj[Object.keys(this.masterObj)[i]])
+      }
     }
   }
 
   countVotes(){
-    for (var i=0; i < this.results.length; i++){
-      for (var n=0; n < this.results[i][this.index].length; n++){
-      let opKey = Object.keys(this.masterObj[this.results[i][this.index][n]])[n];
-      this.masterObj[this.results[i][this.index][n]][opKey]++
+    if(this.results){
+      for (var i=0; i < this.results.length; i++){
+        for (var n=0; n < this.results[i][this.index].length; n++){
+        let opKey = Object.keys(this.masterObj[this.results[i][this.index][n]])[n];
+        this.masterObj[this.results[i][this.index][n]][opKey]++
+        }
       }
     }
   }

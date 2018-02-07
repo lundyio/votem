@@ -1,7 +1,8 @@
 [  
     {  
         "name":"Coke VS Pepsi",
-        "private":"",
+        "private":true,
+        "code": "cokevpepsi",
         "dateRange":{  
             "beginDate":{  
                 "year":2016,

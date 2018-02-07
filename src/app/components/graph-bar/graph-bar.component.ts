@@ -20,29 +20,37 @@ export class GraphBarComponent implements OnInit {
   constructor() { }
 
   setupObj(){
-    for (var i=0; i < Object.keys(this.ballot.options).length; i++){
-      this.masterObj[Object.values(this.ballot.options)[i]] = 0;
+    if(this.ballot){
+      for (var i=0; i < Object.keys(this.ballot.options).length; i++){
+        this.masterObj[Object.values(this.ballot.options)[i]] = 0;
+      }
     }
   }
 
   setLables(){
-    this.chartLabels = Object.keys(this.masterObj);
+    if(this.masterObj){
+      this.chartLabels = Object.keys(this.masterObj);
+    }
   }
 
   setData(){
-    this.chartData = [{
-      label: this.ballot.question,
-      data: Object.values(this.masterObj)
-    }]
+    if(this.ballot){
+      this.chartData = [{
+        label: this.ballot.question,
+        data: Object.values(this.masterObj)
+      }]
+    }
   }
 
   countVotes(){
-    for (var i=0; i < this.results.length; i++){
-      if(typeof(this.results[i][this.index]) === 'string'){
-        this.masterObj[this.results[i][this.index]]++
-      } else {
-        for (var n=0; n < this.results[i][this.index].length; n++){
-          this.masterObj[this.results[i][this.index][n]]++
+    if(this.results){
+      for (var i=0; i < this.results.length; i++){
+        if(typeof(this.results[i][this.index]) === 'string'){
+          this.masterObj[this.results[i][this.index]]++
+        } else {
+          for (var n=0; n < this.results[i][this.index].length; n++){
+            this.masterObj[this.results[i][this.index][n]]++
+          }
         }
       }
     }

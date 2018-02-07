@@ -28,11 +28,6 @@ describe('NewBallotComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('expect adding to be set to true when editing', () => {
-    component.editQuestion(0);
-    expect(component.adding).toBeTruthy();
-  });
-
   it('should call scubOptions if remove option is called', () => {
     spyOn(component, 'scrubOptions').and.callThrough();
     component.removeOption(0);

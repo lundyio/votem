@@ -30,7 +30,7 @@
   <div class="ballot-details">
     <div class="section-head">
       <h2>Ballot Details</h2>
-      <button [routerLink]="'/admin/ballot/' + election.id" *ngIf="!active && election.ballot">Edit</button>
+      <button [routerLink]="'/admin/ballot/' + election.id" *ngIf="isEditable() && election.ballot">Edit</button>
     </div>
     <div *ngIf="!election.ballot" class="no-ballot">
       <p>There is no ballot for this election please add one.</p>

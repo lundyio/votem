@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { Input } from '@angular/core';
 import { ElectionDetailsComponent } from './election-details.component';
 import { BackComponent } from '../back/back.component';
+import { GraphBarComponent } from '../graph-bar/graph-bar.component';
+import { GraphLineComponent } from '../graph-line/graph-line.component';
+import { ChartsModule } from 'ng2-charts';
 
 describe('ElectiondetailsComponent', () => {
   let component: ElectionDetailsComponent;
@@ -13,8 +16,8 @@ describe('ElectiondetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElectionDetailsComponent, BallotComponent, BackComponent ],
-      imports: [ RouterTestingModule, FormsModule, HttpModule ]
+      declarations: [ ElectionDetailsComponent, BallotComponent, BackComponent, GraphBarComponent, GraphLineComponent ],
+      imports: [ RouterTestingModule, FormsModule, HttpModule, ChartsModule ]
     })
     .compileComponents();
   }));

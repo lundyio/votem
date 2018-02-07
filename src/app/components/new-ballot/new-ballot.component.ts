@@ -95,17 +95,21 @@ export class NewBallotComponent implements OnInit {
     let newModel = {
       options: {}
     };
-    for ( var n = 0; n < Object.keys(this.model.options).length; n++ ){
-      newModel.options['option' + (n+1)] = Object.values(this.model.options)[n]
+    if(this.model.options){
+      for ( var n = 0; n < Object.keys(this.model.options).length; n++ ){
+        newModel.options['option' + (n+1)] = Object.values(this.model.options)[n]
+      }
+      this.model.options = newModel.options;
     }
-    this.model.options = newModel.options;
   }
 
   // remove and option
   removeOption(i){
-    this.options.splice(i, 1);
-    delete this.model.options['option' + (i+2)];
-    this.scrubOptions();
+    if(this.options && this.model.options){
+      this.options.splice(i, 1);
+      delete this.model.options['option' + (i+2)];
+      this.scrubOptions();
+    }
   }
 
   // add an option

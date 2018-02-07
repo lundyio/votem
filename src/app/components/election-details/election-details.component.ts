@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ElectionDataService } from '../../services/election-data/election-data.service';
+import { MyDateRangePicker } from 'mydaterangepicker';
 
 @Component({
   selector: 'app-election-details',
@@ -41,10 +42,20 @@ export class ElectionDetailsComponent implements OnInit {
       (res) => {
         if(res.status == 200){
           this.results = JSON.parse(res['_body']);
+          this.isEditable()
           console.log(this.results);
         }
       });
 
+  }
+
+  isEditable(){
+    let now: any = new Date();
+    let beginDate = Date.parse(this.election.dateRange.beginJsDate);
+    now = Date.parse(now);
+    if(beginDate - now > 0){
+      return true;
+    }
   }
 
   ngOnInit() {
