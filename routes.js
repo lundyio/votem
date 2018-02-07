@@ -83,6 +83,21 @@ router.post('/save/ballot', function(req, res, status){
 });
 
 /**
+ * Save Vote
+ */
+router.post('/save/vote', function(req, res, status){
+
+    var votes = JSON.parse(fs.readFileSync('./data/votes.json', 'utf8'));
+
+    votes.push(req.body)
+
+    fs.writeFile('./data/votes.json', JSON.stringify(votes), 'utf8', function(){
+        res.status(200).send('Successfully Counted Vote');
+    });
+
+});
+
+/**
  * Get Elections
  */
 router.get('/get/elections', function(req, res, status){

@@ -23,6 +23,7 @@ import { NewElectionComponent } from './components/new-election/new-election.com
 import { ElectionDetailsComponent } from './components/election-details/election-details.component';
 import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
 import { BallotComponent } from './components/ballot/ballot.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     { path: 'ballot/:id', component: NewBallotComponent }
   ]},
   { path: 'admin/login', component: LoginComponent },
+  { path: 'thank-you', component: ThankYouComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '',   redirectTo: 'landing', pathMatch: 'full' },
   { path: 'login',   redirectTo: 'admin/login', pathMatch: 'full' },
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     NewElectionComponent,
     ElectionDetailsComponent,
     NewBallotComponent,
-    BallotComponent
+    BallotComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,

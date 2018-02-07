@@ -1,43 +1,34 @@
 <div class="question-group" *ngFor="let q of election.ballot; let i = index">
-  
   <h3>{{q.question}}</h3>    
-  
-    <div class="question" *ngIf="q.questionType === 'select-one'">
-      <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
-          <label tabindex="0" for="option-{{i}}-{{n}}">
-            <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" [(ngModel)]="model[i]">
-            <div class="fake-radio" [ngClass]="{checked: model[i] === val}"></div>
-            <span>{{val}}</span>
-          </label>
-      </div>
+  <div class="question" *ngIf="q.questionType === 'select-one'">
+    <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
+        <label tabindex="0" for="option-{{i}}-{{n}}">
+          <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" [(ngModel)]="model[i]">
+          <div class="fake-radio" [ngClass]="{checked: model[i] === val}"></div>
+          <span>{{val}}</span>
+        </label>
     </div>
-
-    <div class="question" *ngIf="q.questionType === 'select-n'">
-      <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
-          <label tabindex="0" for="option-{{i}}-{{n}}" (keypress)="handleKeypress($event, val, i)">
-            <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" (click)="handleChange(val, i)">
-            <div class="fake-radio" [ngClass]="{checked: isChecked(val, i)}"></div>
-            <span>{{val}}</span>
-          </label>
-      </div>
+  </div>
+  <div class="question" *ngIf="q.questionType === 'select-n'">
+    <div class="radio-group" *ngFor="let val of objectValues(election.ballot[i].options); let n = index;">
+        <label tabindex="0" for="option-{{i}}-{{n}}" (keypress)="handleKeypress($event, val, i)">
+          <input id="option-{{i}}-{{n}}" name="options{{i}}" type="radio" [value]="val" (click)="handleChange(val, i)">
+          <div class="fake-radio" [ngClass]="{checked: isChecked(val, i)}"></div>
+          <span>{{val}}</span>
+        </label>
     </div>
-
-    <div class="question" *ngIf="q.questionType === 'select-ranked'">
-      <div class="ranked-group">
-        <ol>
-          <li *ngFor="let val of getValues(i); let n = index;">
-            <div class="controls">
-              <button (click)="moveUp(i, n)"><i class="fas fa-arrow-alt-up"></i></button>
-              <button (click)="moveDown(i, n)"><i class="fas fa-arrow-alt-down"></i></button>
-            </div>
-            <span>{{val}}</span>
-          </li>
-        </ol>
-      </div>
+  </div>
+  <div class="question" *ngIf="q.questionType === 'select-ranked'">
+    <div class="ranked-group">
+      <ol>
+        <li *ngFor="let val of getValues(i); let n = index;">
+          <div class="controls">
+            <button (click)="moveUp(i, n)"><i class="fas fa-arrow-alt-up"></i></button>
+            <button (click)="moveDown(i, n)"><i class="fas fa-arrow-alt-down"></i></button>
+          </div>
+          <span>{{val}}</span>
+        </li>
+      </ol>
     </div>
-
+  </div>
 </div>
-
-<pre>
-  {{model | json}}
-</pre>
