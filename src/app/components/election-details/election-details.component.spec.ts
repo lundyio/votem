@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Input } from '@angular/core';
 import { ElectionDetailsComponent } from './election-details.component';
+import { BackComponent } from '../back/back.component';
 
 describe('ElectiondetailsComponent', () => {
   let component: ElectionDetailsComponent;
@@ -12,7 +13,7 @@ describe('ElectiondetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElectionDetailsComponent, BallotComponent ],
+      declarations: [ ElectionDetailsComponent, BallotComponent, BackComponent ],
       imports: [ RouterTestingModule, FormsModule, HttpModule ]
     })
     .compileComponents();

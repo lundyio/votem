@@ -10,6 +10,7 @@ import {fakeAsync, tick} from '@angular/core/testing';
 import {BaseRequestOptions, ConnectionBackend, Http, RequestOptions} from '@angular/http';
 import {Response, ResponseOptions} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
+import { BackComponent } from '../back/back.component';
 
 describe('NewElectionComponent', () => {
   let component: NewElectionComponent;
@@ -17,7 +18,7 @@ describe('NewElectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewElectionComponent, MockMyDateRangePicker ],
+      declarations: [ NewElectionComponent, MockMyDateRangePicker, BackComponent ],
       imports: [ FormsModule, HttpModule, RouterTestingModule ]
     })
     .compileComponents();
@@ -41,7 +42,7 @@ describe('NewElectionComponent onSubmit', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewElectionComponent, MockMyDateRangePicker ],
+      declarations: [ NewElectionComponent, MockMyDateRangePicker, BackComponent ],
       imports: [ FormsModule, HttpModule, RouterTestingModule ]
     })
     .compileComponents();

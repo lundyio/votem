@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { LocationStrategy } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BackComponent } from './back.component';
 
 describe('BackComponent', () => {
@@ -8,7 +9,9 @@ describe('BackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackComponent ]
+      declarations: [ BackComponent ],
+      imports: [RouterTestingModule],
+      providers: [ LocationStrategy ]
     })
     .compileComponents();
   }));

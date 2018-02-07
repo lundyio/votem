@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HeaderComponent } from '../header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ThankYouComponent } from './thank-you.component';
+import { AuthService } from '../../services/auth/auth.service';
 
 describe('ThankYouComponent', () => {
   let component: ThankYouComponent;
@@ -8,7 +10,9 @@ describe('ThankYouComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThankYouComponent ]
+      declarations: [ ThankYouComponent, HeaderComponent ],
+      imports: [RouterTestingModule],
+      providers: [AuthService]
     })
     .compileComponents();
   }));

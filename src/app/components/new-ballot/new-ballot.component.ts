@@ -4,11 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ElectionDataService } from '../../services/election-data/election-data.service';
 
 @Component({
   selector: 'app-new-ballot',
   templateUrl: './new-ballot.component.html',
-  styleUrls: ['./new-ballot.component.scss']
+  styleUrls: ['./new-ballot.component.scss'],
+  providers: [ElectionDataService]
 })
 export class NewBallotComponent implements OnInit {
 
@@ -34,26 +36,28 @@ export class NewBallotComponent implements OnInit {
   errorMessage: string;
   pendingChanges: boolean = false;
 
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute) {
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private loaderService: ElectionDataService) {
+
+    this.route.params.subscribe(params => {
+      this.electionId = params['id'];
+    });
 
   }
 
   // load election data
   loadElection(){
-    this.route.params.subscribe(params => {
-      this.electionId = params['id'];
-    });
-    var headers = new Headers();
-    this.http.get(this.urlBase + '/get/election/' + this.electionId, {headers:headers})
-      .subscribe(
-        (res) => {
-          if(res.status == 200){
-            this.election = JSON.parse(res['_body']);
-          }
-        },
-        (err) => {
-          
-      });
+    
+    this.loaderService.getElection(this.electionId)
+      .then(() => {
+        this.election = this.loaderService.election;
+        console.log(this.election);
+      })
+      .catch(
+        () => {
+          console.log('Failed to retrieve content.')
+        }
+      );    
+
   }
 
   // delete question
@@ -75,6 +79,7 @@ export class NewBallotComponent implements OnInit {
         if(x != this.optionsCount){
           this.options.push(this.optionsCount);
         }
+        console.log(this.election.ballot[i].options);
         this.model.options = this.election.ballot[i].options;
       }
     }
@@ -178,13 +183,7 @@ export class NewBallotComponent implements OnInit {
           if(res.status == 200){
             this.loadElection();
           }
-        },
-        (err) => {
-          this.error = true;
-          if(err){
-            this.errorMessage = 'There was an error saving this ballot please try again.'
-          }
-      });
+        });
   }
 
   ngOnInit() {

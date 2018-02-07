@@ -32,10 +32,7 @@ export class LandingComponent implements OnInit {
             } else {
               this.invalid = true;
             }
-          },
-          (err) => {
-            
-        });
+          });
     }
   }
 

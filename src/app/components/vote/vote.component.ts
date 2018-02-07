@@ -4,11 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BallotComponent } from '../ballot/ballot.component';
+import { ElectionDataService } from '../../services/election-data/election-data.service';
 
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',
-  styleUrls: ['./vote.component.scss']
+  styleUrls: ['./vote.component.scss'],
+  providers: [ElectionDataService]
 })
 export class VoteComponent implements OnInit {
 
@@ -21,29 +23,12 @@ export class VoteComponent implements OnInit {
   };
   submitted: boolean = false;
 
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute) { }
-
-  // load election data
-  loadElection(){
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private loaderService: ElectionDataService) {
 
     this.route.params.subscribe(params => {
       this.electionId = params['id'];
     });
 
-    var headers = new Headers();
-    this.http.get(this.urlBase + '/get/election/' + this.electionId, {headers:headers})
-      .subscribe(
-        (res) => {
-          if(res.status == 200){
-            this.election = JSON.parse(res['_body']);
-            if(sessionStorage.getItem('voted') === this.election.id){
-              this.router.navigate(['thank-you']);
-            }
-          }
-        },
-        (err) => {
-          
-      });
   }
 
   // send vote to server, jumps to the top if there is a validation error because the form gets long
@@ -69,15 +54,28 @@ export class VoteComponent implements OnInit {
             sessionStorage.setItem('voted', this.election.id);
             this.router.navigate(['thank-you']);
           }
-        },
-        (err) => {
-
-      });
+        });
 
   }
 
   ngOnInit() {
-    this.loadElection();
+
+    // ask for election data then asign it if all goes well, if already voted redirect to ty page
+    this.loaderService.getElection(this.electionId)
+      .then(() => {
+        this.election = this.loaderService.election;
+        
+        if(sessionStorage.getItem('voted') === this.election.id){
+          this.router.navigate(['thank-you']);
+        }
+
+      })
+      .catch(
+        () => {
+          console.log('Failed to retrieve content.')
+        }
+      );
+
   }
 
 }

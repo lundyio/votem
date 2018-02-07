@@ -31,10 +31,7 @@ export class DashboardComponent implements OnInit {
           }
 
         }
-      },
-      (err) => {
-        // add better error handling
-    });
+      });
   }
 
   // sorts elections into active, future, and past

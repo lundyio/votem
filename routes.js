@@ -132,4 +132,26 @@ router.get('/get/election/:id', function(req, res, status){
 
 });
 
+/**
+ * Get Elections Results By ID
+ */
+router.get('/get/results/:id', function(req, res, status){
+
+    var results = JSON.parse(fs.readFileSync('./data/results.json', 'utf8'));
+
+    var filtered = [];
+
+    if(results.length > 0){
+        for (i = 0; i < results.length; i++) {
+            if(results[i].id === req.params.id){
+                results.push(elections[i])
+            }
+        }
+        res.status(200).send();
+    } else {
+        res.status(404).send('Election Results Found');
+    }
+
+});
+
 module.exports = router;

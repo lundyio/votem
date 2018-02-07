@@ -26,14 +26,8 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should hide the login button if its parent is the login page', () => {
-    component.parent = 'login',
-    component.ngOnInit()
-    expect(component.showLoginButton).toBeFalsy();
-  });
-
-  it('should show the login button if its parent is not the login page', () => {
-    component.parent = 'home',
+  it('should only show the login button on the landing page', () => {
+    component.parent = 'landing',
     component.ngOnInit()
     expect(component.showLoginButton).toBeTruthy();
   });

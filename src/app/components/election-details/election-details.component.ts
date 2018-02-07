@@ -3,10 +3,12 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ElectionDataService } from '../../services/election-data/election-data.service';
 
 @Component({
   selector: 'app-election-details',
   templateUrl: './election-details.component.html',
+  providers: [ElectionDataService],
   styleUrls: ['./election-details.component.scss']
 })
 export class ElectionDetailsComponent implements OnInit {
@@ -25,29 +27,10 @@ export class ElectionDetailsComponent implements OnInit {
     }
   };
 
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute) { }
-
-  // get election info from server
-  loadElection(){
-
-    // get id from route
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private loaderService: ElectionDataService) {
     this.route.params.subscribe(params => {
       this.electionId = params['id'];
     });
-
-    // get election info from server
-    var headers = new Headers();
-    this.http.get(this.urlBase + '/get/election/' + this.electionId, {headers:headers})
-      .subscribe(
-        (res) => {
-          if(res.status == 200){
-            this.election = JSON.parse(res['_body']);
-            this.setStatus();
-          }
-        },
-        (err) => {
-          
-      });
   }
 
   // determin is the election is currently running
@@ -74,7 +57,17 @@ export class ElectionDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loadElection();
+    // ask for election data then asign it if all goes well, then set status
+    this.loaderService.getElection(this.electionId)
+      .then(() => {
+        this.election = this.loaderService.election;
+        this.setStatus();
+      })
+      .catch(
+        () => {
+          console.log('Failed to retrieve content.')
+        }
+      );      
 
   }
 

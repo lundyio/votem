@@ -26,4 +26,29 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should sort start dates decending', () => {
+    spyOn(component, 'sortStartDec').and.callThrough();
+    let a = new Date();
+    let b = new Date();
+    component.sortStartDec(a, b);
+    expect(component.sortStartDec).toHaveBeenCalled();
+  });
+
+  it('should sort end dates acending', () => {
+    spyOn(component, 'sortEndAsc').and.callThrough();
+    let a = new Date();
+    let b = new Date();
+    component.sortEndAsc(a, b);
+    expect(component.sortEndAsc).toHaveBeenCalled();
+  });
+
+  it('should sort end dates decending', () => {
+    spyOn(component, 'sortEndDec').and.callThrough();
+    let a = new Date();
+    let b = new Date();
+    component.sortEndDec(a, b);
+    expect(component.sortEndDec).toHaveBeenCalled();
+  });
+
 });
