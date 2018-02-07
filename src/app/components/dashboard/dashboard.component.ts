@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
           for (var i = 0; i < this.elections.length; i++) {
             this.sortElection(this.elections[i]);
           }
-
         }
       });
   }
@@ -57,7 +56,8 @@ export class DashboardComponent implements OnInit {
         created: election.created,
         startDate:election.dateRange.beginJsDate,
         endDate: election.dateRange.endJsDate,
-        ballot: election.ballot
+        ballot: election.ballot,
+        ballotsCollected: election.ballotsCollected
       });
       this.futureElections.sort(this.sortStartDec);
     }
@@ -71,7 +71,8 @@ export class DashboardComponent implements OnInit {
         created: election.created,
         startDate:election.dateRange.beginJsDate,
         endDate: election.dateRange.endJsDate,
-        ballot: election.ballot
+        ballot: election.ballot,
+        ballotsCollected: election.ballotsCollected
       });
       this.pastElections.sort(this.sortEndDec);
     }
@@ -85,7 +86,8 @@ export class DashboardComponent implements OnInit {
         created: election.created,
         startDate:election.dateRange.beginJsDate,
         endDate: election.dateRange.endJsDate,
-        ballot: election.ballot
+        ballot: election.ballot,
+        ballotsCollected: election.ballotsCollected
       });
       this.activeElections.sort(this.sortEndAsc);
     }
@@ -137,6 +139,7 @@ export class Election {
     public created: Date,
     public startDate: Date,
     public endDate: Date,
-    public ballot: boolean
+    public ballot: boolean,
+    public ballotsCollected: number
   ) { }
 }

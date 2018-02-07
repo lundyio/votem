@@ -103,6 +103,16 @@ router.post('/save/vote', function(req, res, status){
 router.get('/get/elections', function(req, res, status){
 
     var elections = JSON.parse(fs.readFileSync('./data/elections.json', 'utf8'));
+    var votes = JSON.parse(fs.readFileSync('./data/votes.json', 'utf8'));
+
+    for (var i=0; i < elections.length; i++){
+        elections[i]['ballotsCollected'] = 0;
+        for (var n=0; n < votes.length; n++){
+            if(elections[i].id === votes[n].electionId){
+                elections[i]['ballotsCollected']++
+            }
+        }
+    }
 
     if(elections){
         res.status(200).send(elections);
