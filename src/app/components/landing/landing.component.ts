@@ -32,8 +32,11 @@ export class LandingComponent implements OnInit {
             } else {
               this.invalid = true;
             }
-          });
-    }
+          }, 
+          (err) => { 
+            this.invalid = true;
+        });
+      }
   }
 
   ngOnInit() {
