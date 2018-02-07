@@ -30,8 +30,6 @@ export class NewElectionComponent implements OnInit {
   onSubmit(f){
     this.submitted = false;
     window.setTimeout(()=>{this.submitted = true;}); // fix this later, but it works
-    console.log(f);
-
     if(f.valid){
       var headers = new Headers();
       this.http.post(this.urlBase + '/save/election', f.value,{headers:headers})
@@ -42,7 +40,6 @@ export class NewElectionComponent implements OnInit {
             }
           },
           (err) => {
-            console.log(err._body);
             this.error = true;
             if(err._body === 'Election Code'){
               this.errorMessage = 'This election code has already been used.'

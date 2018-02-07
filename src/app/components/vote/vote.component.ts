@@ -69,13 +69,7 @@ export class VoteComponent implements OnInit {
           this.router.navigate(['thank-you']);
         }
 
-      })
-      .catch(
-        () => {
-          console.log('Failed to retrieve content.')
-        }
-      );
-
+      });
   }
 
 }

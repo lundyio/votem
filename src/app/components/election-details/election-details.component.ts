@@ -43,7 +43,6 @@ export class ElectionDetailsComponent implements OnInit {
         if(res.status == 200){
           this.results = JSON.parse(res['_body']);
           this.isEditable()
-          console.log(this.results);
         }
       });
 

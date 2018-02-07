@@ -39,7 +39,6 @@ export class GraphLineComponent implements OnInit {
   }
 
   setData(){
-    console.log(this.masterObj);
     if(this.masterObj){
       for (var i=0; i < Object.keys(this.masterObj[Object.keys(this.masterObj)[0]]).length; i++){
         this.chartData.push({

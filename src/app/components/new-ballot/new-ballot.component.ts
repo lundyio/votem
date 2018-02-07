@@ -50,14 +50,7 @@ export class NewBallotComponent implements OnInit {
     this.loaderService.getElection(this.electionId)
       .then(() => {
         this.election = this.loaderService.election;
-        console.log(this.election);
-      })
-      .catch(
-        () => {
-          console.log('Failed to retrieve content.')
-        }
-      );    
-
+      });
   }
 
   // delete question
@@ -79,7 +72,6 @@ export class NewBallotComponent implements OnInit {
         if(x != this.optionsCount){
           this.options.push(this.optionsCount);
         }
-        console.log(this.election.ballot[i].options);
         this.model.options = this.election.ballot[i].options;
       }
     }
