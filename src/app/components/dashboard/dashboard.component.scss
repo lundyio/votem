@@ -18,6 +18,9 @@
                 text-align: right;
                 width: auto;
             }
+            &:first-of-type{
+                width: 30%;
+            }
         }
         tr{
             td{

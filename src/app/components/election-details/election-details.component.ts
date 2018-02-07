@@ -59,9 +59,10 @@ export class ElectionDetailsComponent implements OnInit {
   }
 
   setStatus(){
+    this.isActive();
     if(!this.election.ballot){
       this.status = 'Needs a Ballot'
-    } else if(this.isActive()) {
+    } else if(this.active) {
       this.status = 'Active'
     }
   }

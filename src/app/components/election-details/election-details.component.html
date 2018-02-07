@@ -3,6 +3,7 @@
   <div class="election-details">
     <div class="section-head">
       <h2>{{election.name}}</h2>
+      <button [routerLink]="'/vote/' + election.id">View Election</button>
     </div>
     <p>Created On: {{election.created | date}}</p>
     <p>Running Dates: {{election.dateRange.beginJsDate | date}} - {{election.dateRange.endJsDate | date}}</p>

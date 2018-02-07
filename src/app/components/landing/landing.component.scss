@@ -6,6 +6,7 @@
     min-height: 100vh;
     width: 100%;
     color: $white;
+    padding-bottom: 3rem;
     h1{
         text-align: center;
         font-size: 4rem;
@@ -53,5 +54,12 @@
                 color: #FFC2C2;
             }
         }
+    }
+    @media screen and (max-width: $big-phone) {
+        h1{
+            font-size: 2.5rem;
+            margin: 1.5rem;
+        }
+        
     }
 }
