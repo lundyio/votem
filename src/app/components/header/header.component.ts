@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   @Input('parent') parent: string;
   showLoginButton: boolean = false;
+  hover: boolean = false;
 
   constructor(private authService: AuthService) { }
 

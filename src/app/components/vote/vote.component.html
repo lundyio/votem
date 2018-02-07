@@ -5,7 +5,7 @@
 <section>
   <div class="personal-info">
     <h3>Your Information</h3>
-    <form #f="ngForm" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid || error}">
+    <form #f="ngForm" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid}">
       <div class="row">
         <div class="col-4">
           <label for="firstName">First Name</label>

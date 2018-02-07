@@ -76,7 +76,7 @@
     <div class="row save">
       <div class="col-8">
         <button (click)="cancel()" class="ghost" [disabled]="!(adding || edit || pendingChanges)">Cancel</button>
-        <button (click)="onSubmit()" [disabled]="!(adding || edit || pendingChanges)">Save</button>
+        <button (click)="onSubmit(f)" [disabled]="!(adding || edit || pendingChanges)">Save</button>
       </div>
     </div>
   </div>
