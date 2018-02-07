@@ -4,7 +4,7 @@
       <h2>Active Elections</h2>
       <button [routerLink]="'/admin/election/new'">Create New</button>
     </div>
-    <div class="no-data" *ngIf="futureElections.length <= 0">
+    <div class="no-data" *ngIf="activeElections.length <= 0">
       <p>There arent any upcoming elections, maybe create one?</p>
     </div>
     <table *ngIf="activeElections.length > 0">

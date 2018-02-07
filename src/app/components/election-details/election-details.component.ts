@@ -14,6 +14,7 @@ export class ElectionDetailsComponent implements OnInit {
   urlBase: string = environment.apiUrl;
   electionId: string;
   status: string = 'Checking...'
+  active: boolean = false;
   election: any = {
     name: '',
     ballot: '',
@@ -39,7 +40,6 @@ export class ElectionDetailsComponent implements OnInit {
           if(res.status == 200){
             this.election = JSON.parse(res['_body']);
             this.setStatus();
-            console.log(this.election);
           }
         },
         (err) => {
@@ -47,9 +47,22 @@ export class ElectionDetailsComponent implements OnInit {
       });
   }
 
+  isActive(){
+    let beginDate = Date.parse(this.election.dateRange.beginJsDate);
+    let now: any = new Date();
+
+    if((beginDate - Date.parse(now)) < 0){
+      this.active = true;
+    } else {
+      this.active = false;
+    }
+  }
+
   setStatus(){
     if(!this.election.ballot){
       this.status = 'Needs a Ballot'
+    } else if(this.isActive()) {
+      this.status = 'Active'
     }
   }
 

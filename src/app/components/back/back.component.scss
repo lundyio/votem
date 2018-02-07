@@ -1,0 +1,23 @@
+@import "../../../styles/variables";
+
+:host{
+    display: block;
+    padding: 1.5rem 0 0 0;
+    margin-bottom: -1.5rem;
+    button{
+        color: $purple;
+        border-color: $purple;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1;
+        vertical-align: middle;
+    }
+    .fa-arrow-alt-to-left{
+        line-height: 1;
+        display: inline-block;
+        margin-right: 0.25rem;
+    }
+    @media screen and (max-width: $big-phone) {
+        margin-bottom: 0;
+    }
+}

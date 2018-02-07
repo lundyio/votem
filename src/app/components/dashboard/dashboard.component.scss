@@ -50,4 +50,21 @@
             color: $purple;
         }
     }
+    @media screen and (max-width: $big-phone) {
+        td, th{
+            position: relative;
+            &:nth-child(2){
+                display: none;
+            }
+        }
+        .new{
+            display: inline-block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -0.75rem;
+            position: absolute;
+            padding-bottom: 1rem;
+        }
+    }
 }

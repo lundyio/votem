@@ -24,6 +24,7 @@ import { ElectionDetailsComponent } from './components/election-details/election
 import { NewBallotComponent } from './components/new-ballot/new-ballot.component';
 import { BallotComponent } from './components/ballot/ballot.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { BackComponent } from './components/back/back.component';
 
 
 const appRoutes: Routes = [
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     ElectionDetailsComponent,
     NewBallotComponent,
     BallotComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    BackComponent
   ],
   imports: [
     BrowserModule,

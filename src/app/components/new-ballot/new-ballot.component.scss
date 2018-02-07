@@ -76,4 +76,17 @@
             margin-top: 4px;
         }
     }
+    @media screen and (max-width: $big-phone) {
+        .no-ballot{
+            position: static;
+            transform: translateY(0);
+        }
+        .remove{
+            padding-bottom: 1rem;
+            justify-content: flex-end;
+        }
+        .add{
+            padding-bottom: 1rem;
+        }
+    }
 }

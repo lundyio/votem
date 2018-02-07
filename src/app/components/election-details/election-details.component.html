@@ -1,6 +1,9 @@
+<app-back></app-back>
 <section>
   <div class="election-details">
-    <h2>{{election.name}}</h2>
+    <div class="section-head">
+      <h2>{{election.name}}</h2>
+    </div>
     <p>Created On: {{election.created | date}}</p>
     <p>Running Dates: {{election.dateRange.beginJsDate | date}} - {{election.dateRange.endJsDate | date}}</p>
     <p>Private: {{election.private ? 'Yes' : 'No'}}<br />Code: {{election.private ? election.code : 'N/A'}}</p>
@@ -16,7 +19,7 @@
       <p>There aren't any results at this time, check back later.</p>
     </div>
     <div *ngIf="results">
-
+      <p>Results Here</p>
     </div>
   </div>
 </section>
@@ -24,7 +27,7 @@
   <div class="ballot-details">
     <div class="section-head">
       <h2>Ballot Details</h2>
-      <button [routerLink]="'/admin/ballot/' + election.id">Edit</button>
+      <button [routerLink]="'/admin/ballot/' + election.id" *ngIf="!active && election.ballot">Edit</button>
     </div>
     <div *ngIf="!election.ballot" class="no-ballot">
       <p>There is no ballot for this election please add one.</p>

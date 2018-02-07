@@ -1,3 +1,4 @@
+<app-back></app-back>
 <section>
   <div class="new-election">
     <div class="section-head">
@@ -5,7 +6,7 @@
     </div>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate [ngClass]="{submitted: submitted, shake: submitted && f.invalid || error}">
       <div class="row">
-        <div class="col-8">
+        <div class="col-4">
           <label for="name">Election Name</label>
           <input type="text" id="name" name="name" ngModel required #name="ngModel" [ngClass]="{shake: name.invalid && name.touched }">
           <div class="validation" *ngIf="(name.invalid && name.touched) || (name.invalid && submitted) ">
@@ -14,13 +15,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-8">
+        <div class="col-4">
           <input id="private" type="checkbox" name="private" ngModel #private="ngModel">
           <label for="private">Make this election private.</label>
         </div>
       </div>
       <div class="row">
-        <div class="col-8" *ngIf="private.value">
+        <div class="col-4" *ngIf="private.value">
           <label for="code">Access Code</label>
           <input type="text" id="code" name="code" ngModel #code="ngModel" [ngClass]="{shake: code.invalid && code.touched }" required="private.value">
           <div class="validation" *ngIf="(code.invalid && code.touched) || (code.invalid && submitted) ">
@@ -29,7 +30,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-8">
+        <div class="col-4">
           <label for="dateRange">Election Dates</label>
           <my-date-range-picker id="dateRange" name="dateRange" [options]="dateRangeOptions" ngModel #dateRange="ngModel" required></my-date-range-picker>
           <div class="validation" *ngIf="(dateRange.invalid && dateRange.touched) || (dateRange.invalid && submitted)">
