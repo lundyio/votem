@@ -33,15 +33,17 @@ If more time was allotted, I would have liked include or refactored the followin
 - XSS is handled by angular, I didnt override and of the sanitation features.
 - An ssl cert would encrypt the post data, other client side encryptions seems like a moot point, maybe you guys can teach me something
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
-
 ## Running the project locally
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `node server-local` so start up the node server. It runs on port 3000.
 
+
 ---
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
 
 ## Build
 
